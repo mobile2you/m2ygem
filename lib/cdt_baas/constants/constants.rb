@@ -17,7 +17,6 @@ module CdtBaas
 
   #paths
   TOKEN_PATH = "oauth2/token?grant_type=client_credentials"
-
   ONLYPAY_USER = "onlypay@mobile2y"
   ONLYPAY_PASSWORD = "Hyq5c5dYRysQTdK"
 
@@ -92,5 +91,8 @@ module CdtBaas
   INDIVIDUALS_ACCOUNTS = "individuals/accounts/"
   RECEIPTS = "receipts/"
   SCHEDULER = "scheduler/"
+  ALIAS_BANK = "v1/accounts"
+  PAYMENT_SLIP_RECHARGE = "recharge"
+  PAYMENT_SLIP_INVOICE = "invoice"
 
 end
