@@ -94,5 +94,6 @@ module CdtBaas
   ALIAS_BANK = "v1/accounts"
   PAYMENT_SLIP_RECHARGE = "recharge"
   PAYMENT_SLIP_INVOICE = "invoice"
+  ADD_NONAME_TO_ACCOUNT = "atribuir-cartao-prepago"
 
 end

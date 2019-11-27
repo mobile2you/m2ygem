@@ -36,6 +36,12 @@ module CdtBaas
 			person
 		end
 
+		def addNonameCard(body)
+			response = @request.postWithHeader(@url + ACCOUNT_PATH + body[:id].to_s + '/' + ADD_NONAME_TO_ACCOUNT, body, [{:key => 'Content-Type', :value => "application/json"}])
+			person = CdtModel.new(response)
+			person
+		end
+
 		def blockedAccount(body)
 			response = @request.post(@url + ACCOUNT_PATH + body[:id].to_s + '/' + BLOCKED_PATH + CdtHelper.conductorBodyToString(body), {})
 			person = CdtModel.new(response)
