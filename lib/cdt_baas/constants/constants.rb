@@ -13,15 +13,15 @@ module CdtBaas
   #auth_url
   TOKEN_HML = "https://auth.hml.caradhras.io/"
   TOKEN_PRD = "https://auth.caradhras.io/"
-  TOKEN_ONLYPAY = "https://devhost.onlypay.com.br/safebox-api/auth/token"
 
-  #paths
-  TOKEN_PATH = "oauth2/token?grant_type=client_credentials"
-  ONLYPAY_USER = "onlypay@mobile2y"
-  ONLYPAY_PASSWORD = "Hyq5c5dYRysQTdK"
+  #TODO: O
+  TOKEN_ONLYPAY = "https://devhost.onlypay.com.br/safebox-api/auth/token"
+  ONLYPAY_USER = "<USER>"
+  ONLYPAY_PASSWORD = "<PASS>"
 
 
   API = "api/"
+  TOKEN_PATH = "oauth2/token?grant_type=client_credentials"
   DETAILS = "details/"
   RATE = "rate/"
   ACCOUNT = "account/"
