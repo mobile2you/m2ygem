@@ -14,7 +14,7 @@ module CdtBaas
   TOKEN_HML = "https://auth.hml.caradhras.io/"
   TOKEN_PRD = "https://auth.caradhras.io/"
 
-  #TODO: O
+  #TODO: Ao dev do onlypay, alterar para o host de PROD e Credenciais.
   TOKEN_ONLYPAY = "https://devhost.onlypay.com.br/safebox-api/auth/token"
   ONLYPAY_USER = "<USER>"
   ONLYPAY_PASSWORD = "<PASS>"
@@ -84,6 +84,7 @@ module CdtBaas
   BILLET = "billet"
   CARRIER_DETAILS = "/carrier-details"
   CARRIER = "carrier"
+  CALCULATE = "calculate"
   CEPS = "ceps"
   WAIVED = "rate/waived"
   KYC = "knowyourclient/people/"

@@ -11,6 +11,11 @@ module CdtBaas
 			response
 		end
 
+		def getCarrierCalculate(body)
+			response = @request.get(@url + RATE + CALCULATE + CdtHelper.conductorBodyToString(body), [{:key => 'Content-Type', :value => 'application/json'}])
+			response
+		end
+
 		def waived(body)
 			response = @request.post(@url + WAIVED, body, true)
 			response
