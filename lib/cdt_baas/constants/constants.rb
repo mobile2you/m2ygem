@@ -88,6 +88,7 @@ module CdtBaas
   CEPS = "ceps"
   WAIVED = "rate/waived"
   KYC = "knowyourclient/people/"
+  PRODUCTS_PATH = "produtos/"
   INDIVIDUALS = "individuals/"
   INDIVIDUALS_ACCOUNTS = "individuals/accounts/"
   RECEIPTS = "receipts/"
