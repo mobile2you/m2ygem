@@ -42,8 +42,8 @@ module CdtBaas
 			person
 		end
 
-		def blockedAccount(body)
-			response = @request.post(@url + ACCOUNT_PATH + body[:id].to_s + '/' + BLOCKED_PATH + CdtHelper.conductorBodyToString(body), {})
+		def blockedAccount(id,body)
+			response = @request.post(@url + ACCOUNT_PATH + id.to_s + '/' + BLOCKED_PATH + CdtHelper.conductorBodyToString(body), {})
 			person = CdtModel.new(response)
 			person
 		end
