@@ -61,7 +61,7 @@ module CdtBaas
 	     end
 
 	     def createNewCard(id)
-	         response = @request.post(@url + CARD + id.to_s + '/' + CREATE_NEW_CARD, {})
+	         response = @request.post(@url + CARD + id.to_s + '/' + CREATE_NEW_CARD, {}, true)
 	         person = CdtModel.new(response)
 	         person
 	     end
