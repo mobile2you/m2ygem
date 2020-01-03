@@ -24,6 +24,7 @@ module CdtBaas
     end
 
     def post(url, body, use_json = false)
+      puts url.to_s
       if use_json
         @headers["Content-Type"] = 'application/json'
       end
