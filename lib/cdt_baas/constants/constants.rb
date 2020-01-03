@@ -38,7 +38,7 @@ module CdtBaas
   TIMELINE_PATH = "timeline/"
   TRANSACTIONS_PATH = "transacoes/"
   ACTIVE_PATH = "reativar/"
-  BLOCKED_PATH = "bloquear/"
+  BLOCKED_PATH = "bloquear"
   CANCEL_PATH = "cancelar/"
   CARD_PATH = "gerar-cartao-grafica/"
   VIRTUAL_CARD_PATH = "gerar-cartao-virtual/"
