@@ -92,6 +92,7 @@ module CdtBaas
   PRODUCTS_PATH = "produtos/"
   INDIVIDUALS = "individuals/"
   INDIVIDUALS_ACCOUNTS = "individuals/accounts/"
+  SMS_PATH = "omnichannel/sms"
   RECEIPTS = "receipts/"
   SCHEDULER = "scheduler/"
   ALIAS_BANK = "v1/accounts"
