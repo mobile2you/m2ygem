@@ -23,5 +23,12 @@ module CdtBaas
 			p2pResponse = response
 			generateResponse(p2pResponse)
 		end
+
+		def findp2pAdjustment(id)
+			response = @request.get(@url + P2P_ADJUSTMENT + id.to_s)
+			p2pResponse = response
+			generateResponse(p2pResponse)
+		end
+
 	end
 end
