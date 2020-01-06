@@ -20,7 +20,7 @@ module CdtBaas
 	         person
 	     end
 
-	 	 def sendAgreement(body)
+	 	 def sendAgreement(body, version = 1)
 	 	 	 @url = @url.gsub("api", "regdocs") + 'v' + version.to_s + '/' 
              response = @request.postWithHeader(@url + AGREEMENT, body, [{:key => 'Content-Type', :value => "application/json"}])
 	         person = CdtModel.new(response)
