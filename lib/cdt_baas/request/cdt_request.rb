@@ -56,6 +56,23 @@ module CdtBaas
       validResponse(req)
     end
 
+    def postBinary(url, options = {})
+
+      body = options[:body].nil? ? {} : options[:body]
+      headers = options[:headers].nil? ? {} : options[:headers]
+      use_logs = options[:use_logs].nil? ? true : options[:use_logs]
+      
+      headers['Authorization'] = @headers['Authorization']
+
+      puts url.to_s if use_logs
+
+      req = HTTParty.post(url,
+        body: body,
+        headers: headers
+      )
+
+      validResponse(req)
+    end
 
     def get(url, headers = [], skipValidation = false)
       if headers.length > 0

@@ -102,5 +102,9 @@ module CdtBaas
   PAYMENT_SLIP_RECHARGE = "recharge"
   PAYMENT_SLIP_INVOICE = "invoice"
   ADD_NONAME_TO_ACCOUNT = "atribuir-cartao-prepago"
+  DOCSPY_DOCUMENTS = "docspy/documents"
+  DOCSPY_SELFIES = "docspy/selfies"
+  DOCSPY_DOCUMENTS_RULES = "docspy/documents/rules"
+  DOCSPY_SELFIES_RULES = "docspy/selfies/rules"
 
 end
