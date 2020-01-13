@@ -13,7 +13,7 @@ module CdtBaas
             person
         end
 
-        def findRegistration(id, version = 2)
+        def findRegistration(id, version = 1)
             response = @request.get(@url + "v#{version}/" + REGISTRATIONS + id.to_s)
             person = CdtModel.new(response)
             person
