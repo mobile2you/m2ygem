@@ -7,7 +7,7 @@ module CdtBaas
 			env == HOMOLOGATION
 		end
 		
-		def self.productionBr?(env)
+		def self.customAuth?(env)
 			env == CUSTOM_AUTH
 		end
 
