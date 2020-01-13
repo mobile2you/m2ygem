@@ -8,7 +8,7 @@ module CdtBaas
 		end
 		
 		def self.customAuth?(env)
-			env == CUSTOM_AUTH
+			env == CUSTOM_AUTH && !CUSTOM_AUTH.blank?
 		end
 
 		def self.saveToken(basic,token)
