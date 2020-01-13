@@ -8,7 +8,7 @@ module CdtBaas
 		end
 		
 		def self.productionBr?(env)
-			env == ONLYPAY
+			env == CUSTOM_AUTH
 		end
 
 		def self.saveToken(basic,token)

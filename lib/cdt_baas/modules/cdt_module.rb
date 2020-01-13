@@ -8,7 +8,7 @@ module CdtBaas
         refreshToken
         @request = CdtRequest.new(nil, @basic)
         @url = CdtHelper.homologation?(env) ? URL_HML : URL_PRD
-        @url = CdtHelper.productionBr?(env) ? URL_ONLYPAY : @url
+        @url = CdtHelper.customAuth?(env) ? URL_CUSTOM_AUTH : @url
       end
 
       def refreshToken

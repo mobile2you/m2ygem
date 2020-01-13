@@ -3,21 +3,21 @@ module CdtBaas
   #envs
   HOMOLOGATION = "hml"
   PRODUCTION = "prd"
-  ONLYPAY = "prdbr"
+  CUSTOM_AUTH = "prdbr"
 
   #urls
   URL_HML = "https://api.hml.caradhras.io/"
   URL_PRD = "https://api.caradhras.io/"
-  URL_ONLYPAY = "https://api.caradhras.io/"
+  URL_CUSTOM_AUTH = "https://api.caradhras.io/"
 
   #auth_url
   TOKEN_HML = "https://auth.hml.caradhras.io/"
   TOKEN_PRD = "https://auth.caradhras.io/"
 
-  #TODO: Ao dev do onlypay, alterar para o host de PROD e Credenciais.
-  TOKEN_ONLYPAY = "https://devhost.onlypay.com.br/safebox-api/auth/token"
-  ONLYPAY_USER = "<USER>"
-  ONLYPAY_PASSWORD = "<PASS>"
+  #custom_auth
+  TOKEN_CUSTOM_AUTH = ENV["CUSTOM_AUTH_URL"]
+  CUSTOM_AUTH_USER = ENV["CUSTOM_AUTH_USER"]
+  CUSTOM_AUTH_PASSWORD = ENV["CUSTOM_AUTH_PASS"]
 
 
   API = "api/"

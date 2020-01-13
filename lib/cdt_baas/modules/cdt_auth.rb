@@ -6,13 +6,13 @@ module CdtBaas
         @request = CdtRequest.new("Basic #{token}", token)
         @basic = token
         @url = CdtHelper.homologation?(env) ? TOKEN_HML : TOKEN_PRD
-        @url = CdtHelper.productionBr?(env) ? TOKEN_ONLYPAY : @url
+        @url = CdtHelper.customAuth?(env) ? TOKEN_CUSTOM_AUTH : @url
       end
 
       def generateToken
         puts @url
-        if @url.include?(TOKEN_ONLYPAY)
-          response = @request.postWithHeader(@url, {:username => ONLYPAY_USER, :password => ONLYPAY_PASSWORD}, [{:key => 'Content-Type', :value => "application/json"}])
+        if @url.include?(TOKEN_CUSTOM_AUTH)
+          response = @request.postWithHeader(@url, {:username => CUSTOM_AUTH_USER, :password => CUSTOM_AUTH_PASSWORD}, [{:key => 'Content-Type', :value => "application/json"}])
           puts response.to_s
           puts response.to_s
         else
