@@ -16,7 +16,7 @@ module CdtBaas
 
         def findRegistration(id, version = 1)
             @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
-            response = @request.get(@url + REGISTRATIONS + id.to_s)
+            response = @request.get(@url + REGISTRATIONS + '/' + id.to_s)
             person = CdtModel.new(response)
             person
         end
@@ -27,7 +27,7 @@ module CdtBaas
                 'Content-Type' => 'image/jpeg',
             }
 
-            response = @request.postBinary(@url + REGISTRATIONS + registration_id.to_s + "/" + DOCUMENTS + CdtHelper.conductorBodyToString(params), options)
+            response = @request.postBinary(@url + REGISTRATIONS + '/' + registration_id.to_s + "/" + DOCUMENTS + CdtHelper.conductorBodyToString(params), options)
             person = CdtModel.new(response)
             person
         end
