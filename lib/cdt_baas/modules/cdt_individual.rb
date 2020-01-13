@@ -37,6 +37,16 @@ module CdtBaas
             person
         end
 
+        def sendDocument(registration_id, params, options)
+            options[:headers] = {
+                'Content-Type' => 'image/jpeg',
+            }
+
+            response = @request.postBinary(@url + "v2/" + INDIVIDUALS + registration_id.to_s + "/" + DOCUMENTS + CdtHelper.conductorBodyToString(params), options)
+            person = CdtModel.new(response)
+            person
+        end
+
 	end
 
 end

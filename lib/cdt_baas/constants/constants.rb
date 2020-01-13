@@ -106,5 +106,6 @@ module CdtBaas
   DOCSPY_SELFIES = "docspy/selfies"
   DOCSPY_DOCUMENTS_RULES = "docspy/documents/rules"
   DOCSPY_SELFIES_RULES = "docspy/selfies/rules"
+  DOCUMENTS = "documents"
 
 end
