@@ -94,6 +94,7 @@ module CdtBaas
   KYC = "knowyourclient/people/"
   PRODUCTS_PATH = "produtos/"
   INDIVIDUALS = "individuals/"
+  REGISTRATIONS = "registrations/"
   INDIVIDUALS_ACCOUNTS = "individuals/accounts/"
   SMS_PATH = "omnichannel/sms"
   RECEIPTS = "receipts/"
