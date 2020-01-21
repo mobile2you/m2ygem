@@ -22,14 +22,14 @@ module CdtBaas
         end
         
         def findCompany(id, version = 1)
-            @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
+            @url = @url.gsub("api", "companies") # + 'v' + version.to_s + '/'
             response = @request.get(@url + COMPANY_REGISTRATIONS + '/' + id.to_s)
             person = CdtModel.new(response)
             person
         end
 
         def updateRegistration(id, body, version = 1)
-            @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
+            @url = @url.gsub("api", "companies") # + 'v' + version.to_s + '/'
             response = @request.put(@url + COMPANY_REGISTRATIONS + '/' + id.to_s)
             person = CdtModel.new(response)
             person
