@@ -95,7 +95,7 @@ module CdtBaas
   PRODUCTS_PATH = "produtos/"
   INDIVIDUALS = "individuals/"
   REGISTRATIONS = "registrations"
-  UPDATE_REGISTRATIONS = "registered/companies"
+  COMPANY_REGISTRATIONS = "registered/companies"
   INDIVIDUALS_ACCOUNTS = "individuals/accounts/"
   SMS_PATH = "omnichannel/sms"
   RECEIPTS = "receipts/"
