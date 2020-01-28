@@ -32,7 +32,7 @@ module CdtBaas
             @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
             url = @url + COMPANY_REGISTRATIONS + '/' + id.to_s
             puts url
-            response = @request.put(url, true)
+            response = @request.put(url, true, false)
             person = CdtModel.new(response)
             person
         end
