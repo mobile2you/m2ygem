@@ -30,8 +30,9 @@ module CdtBaas
 
         def updateRegistration(id, body, version = 1)
             @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
+            url = @url + COMPANY_REGISTRATIONS + '/' + id.to_s
             puts @url
-            response = @request.put(@url + COMPANY_REGISTRATIONS + '/' + id.to_s, true)
+            response = @request.put(url, true)
             person = CdtModel.new(response)
             person
         end
