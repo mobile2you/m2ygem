@@ -23,14 +23,13 @@ module CdtBaas
       @headers["Authorization"] = token
     end
 
-    def post(url, body, use_json = false, use_to_json = true)
+    def post(url, body, use_json = false)
       puts url.to_s
       if use_json
         @headers["Content-Type"] = 'application/json'
       end
-      puts @headers.to_s
       req = HTTParty.post(url,
-                          body: use_to_json ? body.to_json : body,
+                          body: body.to_json,
                           headers: @headers
       )
       validResponse(req)
