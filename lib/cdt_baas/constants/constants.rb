@@ -97,6 +97,7 @@ module CdtBaas
   INDIVIDUALS = "individuals/"
   REGISTRATIONS = "registrations"
   COMPANY_REGISTRATIONS = "registered/companies"
+  COMPANY_NATIONAL_REGISTRATIONS = "registrations/nationalRegistration"
   INDIVIDUALS_ACCOUNTS = "individuals/accounts/"
   SMS_PATH = "omnichannel/sms"
   RECEIPTS = "receipts/"
