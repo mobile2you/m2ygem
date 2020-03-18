@@ -19,7 +19,7 @@ module CdtBaas
             person
         end
 
-        def addAditionalPerson(body, version = 2)
+        def addAditionalPerson(id, body, version = 2)
             response = @request.postWithHeader(@url + "v#{version}/" + INDIVIDUALS + id.to_s + ADDITIONAL, body, [{:key => 'Content-Type', :value => "application/json"}])
             person = CdtModel.new(response)
             person
