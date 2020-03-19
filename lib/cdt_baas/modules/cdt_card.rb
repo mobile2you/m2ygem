@@ -121,19 +121,19 @@ module CdtBaas
 			 end
 
       def createControlLimit(id, body)
-        response = @request.post(@url + CARD + id.to_s + CONTROLS_LIMITS, body)
+        response = @request.post(@url + CARD + id.to_s + CONTROLS_LIMITS, body, [{:key => 'Content-Type', :value => "application/json"}])
         card = CdtModel.new(response)
         card
       end
 
       def updateControlLimit(id, control_limit_id, body)
-        response = @request.put(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id, body)
+        response = @request.put(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id, body, [{:key => 'Content-Type', :value => "application/json"}])
         card = CdtModel.new(response)
         card
       end
 
       def getControlLimit(id, control_limit_id)
-        response = @request.get(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id)
+        response = @request.get(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id, {}, [{:key => 'Content-Type', :value => "application/json"}])
         card = CdtModel.new(response)
         card
       end
