@@ -118,8 +118,24 @@ module CdtBaas
 	         response = @request.get(@url + CARD + PRE_PAID + CdtHelper.conductorBodyToString(body))
 	         person = CdtModel.new(response)
 	         person
-	     end
+			 end
 
- 	end
+      def createControlLimit(id, body)
+        response = @request.post(@url + CARD + id.to_s + CONTROLS_LIMITS, body)
+        card = CdtModel.new(response)
+        card
+      end
 
+      def updateControlLimit(id, control_limit_id, body)
+        response = @request.put(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id, body)
+        card = CdtModel.new(response)
+        card
+      end
+
+      def getControlLimit(id, control_limit_id)
+        response = @request.get(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id)
+        card = CdtModel.new(response)
+        card
+      end
+  end
 end

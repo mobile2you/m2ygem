@@ -111,5 +111,6 @@ module CdtBaas
   DOCSPY_DOCUMENTS_RULES = "docspy/documents/rules"
   DOCSPY_SELFIES_RULES = "docspy/selfies/rules"
   DOCUMENTS = "documents"
+  CONTROLS_LIMITS = "/controles-limites"
 
 end
