@@ -11,13 +11,7 @@ module CdtBaas
 
       def generateToken
         puts @url
-        if TOKEN_CUSTOM_AUTH.present? && @url.include?(TOKEN_CUSTOM_AUTH)
-          response = @request.postWithHeader(@url, {:username => CUSTOM_AUTH_USER, :password => CUSTOM_AUTH_PASSWORD}, [{:key => 'Content-Type', :value => "application/json"}])
-          puts response.to_s
-          puts response.to_s
-        else
-      	 response = @request.post(@url + TOKEN_PATH, {})
-        end
+      	response = @request.post(@url + TOKEN_PATH, {})
         token = CdtModel.new(response)
         CdtBaas::CdtRequest.setToken(token)
         CdtHelper.saveToken(@basic, token.access_token)
