@@ -107,6 +107,20 @@ module CdtBaas
       validResponse(req)
     end
 
+    def patch(url, body = {}, headers = [])
+      if headers.length > 0
+        headers.each do |header|
+          @headers[header[:key]] = header[:value]
+        end
+      end
+      req = HTTParty.patch(url,
+                          headers: @headers,
+                          body: body.to_json
+      )
+      validResponse(req)
+    end
+
+
     def delete(url)
       req = HTTParty.delete(url,
                             headers: @headers
