@@ -92,7 +92,11 @@ module CdtBaas
 	         person
 	     end
 
-
+	     def create_temp_card(id)
+			response = @request.post(@url + ACCOUNT_PATH + id.to_s + CREATE_TEMPORARY_CARD, {}, [{:key => 'Content-Type', :value => "application/json"}])
+			card = CdtModel.new(response)
+			card
+		 end
 
 	end
 end
