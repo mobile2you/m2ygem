@@ -53,6 +53,17 @@ module CdtBaas
             person
         end
 
+        def sendDocumentPdf(registration_id, params, options, version = 1)
+          @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
+          options[:headers] = {
+              'Content-Type' => 'application/pdf',
+          }
+
+          response = @request.postBinary(@url + REGISTRATIONS + '/' + registration_id.to_s + "/" + DOCUMENTS + CdtHelper.conductorBodyToString(params), options)
+          person = CdtModel.new(response)
+          person
+      end
+
 	end
 
 end
