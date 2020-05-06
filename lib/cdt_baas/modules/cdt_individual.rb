@@ -43,6 +43,12 @@ module CdtBaas
             person
         end
 
+        def getDocuments(registration_id, version = 2)
+            response = @request.get(@url + "v#{version}/" + INDIVIDUALS + registration_id.to_s + "/" + DOCUMENTS)
+            person = CdtModel.new(response)
+            person
+        end
+
         def sendDocument(registration_id, params, options, version = 2)
             options[:headers] = {
                 'Content-Type' => 'image/jpeg',
