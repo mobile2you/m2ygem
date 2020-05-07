@@ -13,6 +13,13 @@ module CdtBaas
 	         person
 	     end
 
+	 	 def getRegistrationsWithCustomTypes(version = 1, types)
+	 	 	 @url = @url.gsub("api", "regdocs") + 'v' + version.to_s + '/' 
+	         response = @request.get(@url + REGISTRATION + types)
+	         person = CdtModel.new(response)
+	         person
+	     end
+
 	 	 def getRegistrationsWithTypes(version = 1)
 	 	 	 @url = @url.gsub("api", "regdocs") + 'v' + version.to_s + '/' 
 	         response = @request.get(@url + REGISTRATION + REGISTRATION_WITH_TYPES)
