@@ -64,6 +64,12 @@ module CdtBaas
           person
       end
 
+       def getDocuments(registration_id, version = 1)
+            @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
+            response = @request.get(@url + REGISTRATIONS + '/' + registration_id.to_s + "/" + DOCUMENTS)
+            person = CdtModel.new(response)
+            person
+        end
 	end
 
 end
