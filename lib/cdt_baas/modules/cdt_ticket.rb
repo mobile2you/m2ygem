@@ -18,7 +18,8 @@ module CdtBaas
 
     def create_invoice(params, version = 1)
       @url = @url.gsub('api.', 'paymentslip.')
-      path = "v#{version}/#{PAYMENT_SLIP_INVOICE}" + CdtHelper.conductorBodyToString(params[:query_params])
+      path = "v#{version}/#{PAYMENT_SLIP_INVOICE}"
+      path = path + CdtHelper.conductorBodyToString(params[:query_params]) if params[:query_params]
       params = params[:body_params]
       @request.postWithHeader(@url + path, params, [{ key: 'Content-Type', value: 'application/json' }])
     end
@@ -30,4 +31,3 @@ module CdtBaas
     end
   end
 end
-
