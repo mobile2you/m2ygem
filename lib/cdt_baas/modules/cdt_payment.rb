@@ -20,15 +20,13 @@ module CdtBaas
 		end
 
 		def paymentValidate(barCode, version = 0)
-
-			if version != 0
-				url = @url.gsub("api", "payments") + 'v' + version.to_s + '/' + VALIDATE + barCode
-			else
-				url = @url + PAYMENT_VALIDATE + barCode
-			end
-
+			url = @url.gsub("api", "payments") + 'v' + version.to_s + '/' + VALIDATE + barCode
 			response = @request.get(url)
 			payment = CdtModel.new(response)
+			
+			if version == 0
+				payment = {DataReturn: payment.to_json}
+			end
 			generateResponse(payment)
 		end
 
