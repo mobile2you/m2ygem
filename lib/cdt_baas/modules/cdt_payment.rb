@@ -25,7 +25,7 @@ module CdtBaas
 			payment = CdtModel.new(response)
 			
 			if version == 0
-				payment = {DataReturn: payment.to_json}
+				payment[:DataReturn] = payment
 			end
 			generateResponse(payment)
 		end
