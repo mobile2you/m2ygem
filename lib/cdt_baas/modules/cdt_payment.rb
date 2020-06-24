@@ -25,6 +25,17 @@ module CdtBaas
 			payment = CdtModel.new(response)
 			
 			if version == 0
+
+				begin
+					response["Result"]["ValidateBarCode"]["DigitavelLine"] = response["Result"]["ValidateBarCode"]["BarCodeNumber"]
+				rescue
+				end
+
+				begin
+					response["Result"]["PaymentInfoNPC"]["DigitavelLine"] = response["Result"]["PaymentInfoNPC"]["BarCodeNumber"]
+				rescue
+				end
+
 				payment =  {
             		"Message": {
                 		"MessageId": 0,
