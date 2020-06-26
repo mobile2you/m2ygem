@@ -44,7 +44,11 @@ module CdtBaas
             		},
             		"DataReturn": response
             	}
-
+            	payment["DataReturn"]["Message"] = {
+            		"MessageId": 0,
+                	"Title": "Código validado!",
+                	"Message": "O código inserido foi validado com sucesso."
+            	}
 				payment = CdtModel.new(payment)
 			end
 			generateResponse(payment)
