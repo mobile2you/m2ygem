@@ -36,20 +36,23 @@ module CdtBaas
 				rescue
 				end
 
+				begin
+					response["Message"] = {
+            			"MessageId": 0,
+                		"Title": "Código validado!",
+                		"Message": "O código inserido foi validado com sucesso."
+            		}
+				rescue
+				end
+
 				payment =  {
             		"Message": {
                 		"MessageId": 0,
                 		"Title": "Código validado!",
                 		"Message": "O código inserido foi validado com sucesso."
             		},
-            		"DataReturn": response.nil? ? {} : response
+            		"DataReturn": response
             	}
-            	payment["DataReturn"]["Message"] = {
-            		"MessageId": 0,
-                	"Title": "Código validado!",
-                	"Message": "O código inserido foi validado com sucesso."
-            	}
-				payment = CdtModel.new(payment)
 			end
 			generateResponse(payment)
 		end
