@@ -42,7 +42,7 @@ module CdtBaas
                 		"Title": "Código validado!",
                 		"Message": "O código inserido foi validado com sucesso."
             		},
-            		"DataReturn": response
+            		"DataReturn": response.nil? ? {} : response
             	}
             	payment["DataReturn"]["Message"] = {
             		"MessageId": 0,
