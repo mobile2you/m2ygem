@@ -36,16 +36,19 @@ module CdtBaas
 				rescue
 				end
 
-				# begin
+				begin
 					response["Message"] = {
             			"MessageId": 0,
                 		"Title": "Código validado!",
                 		"Message": "O código inserido foi validado com sucesso."
             		}
-				# rescue
-				# end
-
-				response["Result"]["Message"] = response["Message"]
+				rescue
+				end
+				
+				begin
+					response["Result"]["Message"] = response["Message"]
+				rescue
+				end
 
 				payment =  {
             		"Message": response["Message"],
