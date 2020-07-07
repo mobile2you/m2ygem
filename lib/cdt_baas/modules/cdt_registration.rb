@@ -41,6 +41,13 @@ module CdtBaas
             person
         end
 
+        def updateRegistrationByIdRegistration(id, body, version = 1)
+            @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
+            response = @request.put(@url + REGISTRATIONS + '/' + id.to_s, body, [{:key => 'Content-Type', :value => "application/json"}])
+            person = CdtModel.new(response)
+            person
+        end
+
 
         def sendDocument(registration_id, params, options, version = 1)
             @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
