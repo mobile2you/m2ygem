@@ -118,4 +118,6 @@ module CdtBaas
   CREATE_ORDER = '/create'
   MERCHANTS = '/merchants'
 
+  CHANGE_CARD_PHASE = '/alterar-estagio'
+
 end

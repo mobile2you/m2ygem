@@ -137,5 +137,14 @@ module CdtBaas
         card = CdtModel.new(response)
         card
       end
+
+      def enableCardToBeUnlocked(id)
+        body = {
+          id: 4
+        }
+        response = @request.post(@url + CARD + id.to_s + CHANGE_CARD_PHASE, body, [{:key => 'Content-Type', :value => "application/json"}])
+        card = CdtModel.new(response)
+        card
+      end
   end
 end
