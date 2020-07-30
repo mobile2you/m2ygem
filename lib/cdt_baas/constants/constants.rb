@@ -54,7 +54,7 @@ module CdtBaas
   BANK_SLIP = "boletos/"
   CARD = "cartoes/"
   CARD_CONSULT = "consultar-dados-reais/"
-  PASSWORD_VALIDATION = "validar-senha/"
+  PASSWORD_VALIDATION = "validar-senha"
   LIMIT_CONSULT = "limites-disponibilidades/"
   CREATE_PF_CARD = "gerar-cartao-pf/"
   CREATE_PJ_CARD = "gerar-cartao-pj/"
