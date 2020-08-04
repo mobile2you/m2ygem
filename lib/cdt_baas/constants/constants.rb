@@ -61,7 +61,7 @@ module CdtBaas
   CREATE_NEW_CARD = "gerar-nova-via/"
   UNLOCKED_INCORRECT_PASSWORD = "desbloquear-senha-incorreta/"
   CREATE_DEBIT_CARD = "gerar-Cartao-pre-pago/"
-  REGISTER_PASSWORD = "cadastrar-senha/"
+  REGISTER_PASSWORD = "cadastrar-senha"
   UNLOCKED = "desbloquear/"
   ADD_HOLDER = "atribuir-titular/"
   UPDATE_PASSWORD = "alterar-senha/"    
