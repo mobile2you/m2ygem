@@ -64,7 +64,7 @@ module CdtBaas
   REGISTER_PASSWORD = "cadastrar-senha"
   UNLOCKED = "desbloquear/"
   ADD_HOLDER = "atribuir-titular/"
-  UPDATE_PASSWORD = "alterar-senha/"    
+  UPDATE_PASSWORD = "alterar-senha"    
   REGISTER_PF_ACCOUNT = "clientes/pf"  
   REGISTER_PJ_ACCOUNT = "clientes/pj"  
   GENERATE_DOCUMENT = "generatedocument/"
