@@ -52,6 +52,7 @@ module CdtBaas
   P2P_ADJUSTMENT = "p2ptransfer/adjustment/"
   PAYMENT_ADJUSTMENT = "payments/adjustment/"
   BANK_SLIP = "boletos/"
+  CARD_PLAIN = "cartoes"
   CARD = "cartoes/"
   CARD_CONSULT = "consultar-dados-reais/"
   PASSWORD_VALIDATION = "validar-senha"

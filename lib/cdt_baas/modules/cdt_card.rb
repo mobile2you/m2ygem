@@ -19,7 +19,7 @@ module CdtBaas
 	     end
 
 	 	 def getCards(body)
-	         response = @request.get(@url + CARD + CdtHelper.conductorBodyToString(body))
+	         response = @request.get(@url + CARD_PLAIN + CdtHelper.conductorBodyToString(body))
 	         person = CdtModel.new(response)
 	         person
 	     end
