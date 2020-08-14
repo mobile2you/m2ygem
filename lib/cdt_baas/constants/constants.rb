@@ -120,5 +120,6 @@ module CdtBaas
   MERCHANTS = '/merchants'
 
   CHANGE_CARD_PHASE = '/alterar-estagio'
+  UPDATE_MAILING_ADDRESS = '/alterar-endereco-correspondencia'
 
 end
