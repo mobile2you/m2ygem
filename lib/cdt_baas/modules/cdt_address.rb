@@ -35,8 +35,14 @@ module CdtBaas
 	         response = @request.put(@url + ADDRESSES_PATH + CdtHelper.conductorBodyToString(body))
 	         person = CdtModel.new(response)
 	         person
-	     end
+       end
 
+    def updateMailingAddress(id, body)
+      response = @request.put(@url + ADDRESSES_PATH + id.to_s +
+        UPDATE_MAILING_ADDRESS + CdtHelper.conductorBodyToString(body))
+      person = CdtModel.new(response)
+      person
+    end
  	end
 
 end
