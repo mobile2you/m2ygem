@@ -30,6 +30,12 @@ module CdtBaas
 			person
 		end
 
+		def getTransactionsNew(body)
+			response = @request.get(@url + NEW_ACCOUNT_PATH + body[:id].to_s + '/' + NEW_TRANSACTIONS_PATH + CdtHelper.conductorBodyToString(body))
+			person = CdtModel.new(response)
+			person
+		end
+
 		def activeAccount(body)
 			response = @request.post(@url + ACCOUNT_PATH + body[:id].to_s + '/' + ACTIVE_PATH, {})
 			person = CdtModel.new(response)
