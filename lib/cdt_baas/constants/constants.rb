@@ -37,7 +37,7 @@ module CdtBaas
   NEW_ACCOUNT_PATH = "accounts/"
   ACCOUNT_PATH = "contas/"
   TIMELINE_PATH = "timeline/"
-  TRANSACTIONS_PATH = "transacoes/"
+  TRANSACTIONS_PATH = "transacoes"
   NEW_TRANSACTIONS_PATH = "transactions/"
   ACTIVE_PATH = "reativar"
   BLOCKED_PATH = "bloquear"
