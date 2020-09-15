@@ -33,7 +33,8 @@ module CdtBaas
 		end
 
 		def getTransactionsNew(body)
-			response = @request.get(@url + NEW_ACCOUNT_PATH + '/' + body[:id].to_s + '/' + NEW_TRANSACTIONS_PATH + CdtHelper.conductorBodyToString(body))
+			url = @url + NEW_ACCOUNT_PATH + '/' + body[:id].to_s + '/' + NEW_TRANSACTIONS_PATH
+			body[:id] = nil
 			person = CdtModel.new(response)
 			person
 		end
