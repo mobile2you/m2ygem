@@ -90,7 +90,7 @@ module CdtBaas
   UNASSIGN_PROFILE = "unassign-profile/"
   PRE_PAID = "lotes-cartoes-pre-pagos"
   BILLET = "billet"
-  CARRIER_DETAILS = "/carrier-details"
+  CARRIER_DETAILS = "carrier-details"
   CARRIER = "carrier"
   CALCULATE = "calculate"
   CEPS = "ceps"
