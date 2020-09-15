@@ -25,7 +25,7 @@ module CdtBaas
 	     end
 
 	     def findAddress(id)
-	         response = @request.get(@url + ADDRESSES_PATH + id.to_s)
+	         response = @request.get(@url + ADDRESSES_PATH + '/' + id.to_s)
 	         person = CdtModel.new(response)
 	         person
 	     end
@@ -38,7 +38,7 @@ module CdtBaas
        end
 
     def updateMailingAddress(id, body)
-      response = @request.put(@url + ADDRESSES_PATH + id.to_s +
+      response = @request.put(@url + ADDRESSES_PATH + '/' + id.to_s +
         UPDATE_MAILING_ADDRESS + CdtHelper.conductorBodyToString(body))
       person = CdtModel.new(response)
       person

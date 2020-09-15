@@ -13,7 +13,7 @@ module CdtBaas
 		end
 
 		def getp2pTransfer(body)
-			response = @request.get(@url + P2P_PATH + DETAILS + CdtHelper.conductorBodyToString(body))
+			response = @request.get(@url + P2P_PATH + '/' + DETAILS + CdtHelper.conductorBodyToString(body))
 			p2pResponse = response
 			generateResponse(p2pResponse)
 		end

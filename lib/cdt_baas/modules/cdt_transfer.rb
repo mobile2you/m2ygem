@@ -13,7 +13,7 @@ module CdtBaas
 		end
 
 		def getBankTransfers(id)
-			response = @request.get(@url + BANK_TRANSFER + ACCOUNT + id.to_s)
+			response = @request.get(@url + BANK_TRANSFER + '/' + ACCOUNT + id.to_s)
 			transferResponse = response
 			generateResponse(transferResponse)
 		end

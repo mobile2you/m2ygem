@@ -13,7 +13,7 @@ module CdtBaas
 	     end
 
 	 	 def findAccountCards(body)
-	         response = @request.get(@url + CARD + CdtHelper.conductorBodyToString(body))
+	         response = @request.get(@url + CARD.gsub('/', '') + CdtHelper.conductorBodyToString(body))
 	         person = CdtModel.new(response)
 	         person
 	     end
