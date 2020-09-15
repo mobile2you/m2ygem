@@ -115,7 +115,7 @@ module CdtBaas
 				url = @url + SCHEDULER
 			end
 
-			response = @request.delete(url + SCHEDULER + id.to_s)
+			response = @request.delete(url + SCHEDULER + '/' + id.to_s)
 			payment = CdtModel.new(response)
 			generateResponse(payment)
 		end

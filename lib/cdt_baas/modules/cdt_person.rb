@@ -16,7 +16,7 @@ module CdtBaas
 
 
      def findPerson(id)
-         response = @request.get(@url + PEOPLE_PATH + id.to_s)
+         response = @request.get(@url + PEOPLE_PATH + '/' + id.to_s)
          person = CdtModel.new(response)
          person
      end
@@ -28,7 +28,7 @@ module CdtBaas
      end
 
      def updatePerson(id, body)
-         response = @request.put(@url + PEOPLE_PATH + id.to_s + "/" + CdtHelper.conductorBodyToString(body))
+         response = @request.put(@url + PEOPLE_PATH + '/' + id.to_s + "/" + CdtHelper.conductorBodyToString(body))
          person = CdtModel.new(response)
          person
      end
@@ -41,13 +41,13 @@ module CdtBaas
      end
 
      def findPersonDetails(id)
-         response = @request.get(@url + PEOPLE_DETAILS_PATH + id.to_s)
+         response = @request.get(@url + PEOPLE_DETAILS_PATH + '/' + id.to_s)
          person = CdtModel.new(response)
          person
      end
 
      def updatePersonDetails(id, body)
-         response = @request.get(@url + PEOPLE_DETAILS_PATH + id.to_s + "/" + CdtHelper.conductorBodyToString(body))
+         response = @request.get(@url + PEOPLE_DETAILS_PATH + '/' + id.to_s + "/" + CdtHelper.conductorBodyToString(body))
          person = CdtModel.new(response)
          person
      end

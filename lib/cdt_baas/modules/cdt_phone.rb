@@ -18,7 +18,7 @@ module CdtBaas
 		end
 
 		def findPhone(id)
-			response = @request.get(@url + PHONES_PATH + id.to_s)
+			response = @request.get(@url + PHONES_PATH + '/' + id.to_s)
 			phonesResponse = CdtModel.new(response)
 			generateResponse(phonesResponse)
 		end
