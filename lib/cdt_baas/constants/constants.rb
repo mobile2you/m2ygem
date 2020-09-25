@@ -124,4 +124,18 @@ module CdtBaas
   CHANGE_CARD_PHASE = '/alterar-estagio'
   UPDATE_MAILING_ADDRESS = '/alterar-endereco-correspondencia'
 
+  #pix
+  CHECK_KEYS = "dict/v1/validate"
+  CREATE_KEY = "dict/v1"
+  CLAIM_KEY = "dict/v1/claim-key"
+  CLAIM_KEY_CONFIRMATION = "dict/v1/claim-key/confirmation"
+
+  STATIC_CODE = "code/v1/static-code"
+  DYNAMIC_CODE = "code/v1/static-code"
+  DECODE_CODE = "code/v1/decode"
+  LIST_CODES = "code/v1/code"
+
+  PAY_PIX = "transfers/v1"
+  LIST_PIX = "transfers/v1/receipts"
+  CANCEL_PIX = "transfers/v1/reversal"
 end
