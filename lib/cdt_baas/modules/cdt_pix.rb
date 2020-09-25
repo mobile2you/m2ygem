@@ -42,7 +42,7 @@ module CdtBaas
 
     def getReceipts(account)
       url = pix_url
-      response = @request.get(url + LIST_PIX + "?idAccount=#{account}")
+      response = @request.get(url + LIST_PIX + "?idAccount=#{account}", [jsonHeader])
       generateResponse(response)
     end
 

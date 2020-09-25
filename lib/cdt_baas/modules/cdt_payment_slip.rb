@@ -8,7 +8,7 @@ module CdtBaas
 
 	 	 def createRecharge(body)
 	 	 	 @url = @url.gsub("api.", "paymentslip.")
-             response = @request.postWithHeader(@url + PAYMENT_SLIP_RECHARGE, body, [{:key => 'Content-Type', :value => "application/json"}])
+             response = @request.postWithHeader(@url + PAYMENT_SLIP_RECHARGE, body, [jsonHeader])
 	         person = CdtModel.new(response)
 	         person
 	     end
@@ -22,7 +22,7 @@ module CdtBaas
 
 	 	 def createInvoice(body)
 	 	 	 @url = @url.gsub("api.", "paymentslip.")
-             response = @request.postWithHeader(@url + PAYMENT_SLIP_INVOICE, body, [{:key => 'Content-Type', :value => "application/json"}])
+             response = @request.postWithHeader(@url + PAYMENT_SLIP_INVOICE, body, [jsonHeader])
 	         person = CdtModel.new(response)
 	         person
 	     end

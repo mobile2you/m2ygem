@@ -8,19 +8,19 @@ module CdtBaas
         end
 
         def createAccount(body, version = 2)
-            response = @request.postWithHeader(@url + "v#{version}/" + INDIVIDUALS_ACCOUNTS, body, [{:key => 'Content-Type', :value => "application/json"}])
+            response = @request.postWithHeader(@url + "v#{version}/" + INDIVIDUALS_ACCOUNTS, body, [jsonHeader])
             person = CdtModel.new(response)
             person
         end
 
         def createPerson(body, version = 2)
-            response = @request.postWithHeader(@url + "v#{version}/" + INDIVIDUALS, body, [{:key => 'Content-Type', :value => "application/json"}])
+            response = @request.postWithHeader(@url + "v#{version}/" + INDIVIDUALS, body, [jsonHeader])
             person = CdtModel.new(response)
             person
         end
 
         def addAdditionalPerson(id, body, version = 2)
-            response = @request.postWithHeader(@url + "v#{version}/" + INDIVIDUALS_ACCOUNTS + '/' + id.to_s + ADDITIONAL, body, [{:key => 'Content-Type', :value => "application/json"}])
+            response = @request.postWithHeader(@url + "v#{version}/" + INDIVIDUALS_ACCOUNTS + '/' + id.to_s + ADDITIONAL, body, [jsonHeader])
             person = CdtModel.new(response)
             person
         end
@@ -38,7 +38,7 @@ module CdtBaas
         end
 
         def updatePerson(id, body, version = 2)
-            response = @request.put(@url + "v#{version}/" + INDIVIDUALS + '/' + id.to_s , body, [{:key => 'Content-Type', :value => "application/json"}])
+            response = @request.put(@url + "v#{version}/" + INDIVIDUALS + '/' + id.to_s , body, [jsonHeader])
             person = CdtModel.new(response)
             person
         end

@@ -12,7 +12,7 @@ module CdtBaas
 
     def checkKey(body)
       url = pix_url
-      response = @request.get(url + CHECK_KEYS + CdtHelper.conductorBodyToString(body))
+      response = @request.get(url + CHECK_KEYS + CdtHelper.conductorBodyToString(body), [jsonHeader])
       generateResponse(response)
     end
 
@@ -24,19 +24,19 @@ module CdtBaas
 
     def getKeys(account)
       url = pix_url
-      response = @request.get(url + CREATE_KEY + "?idAccount=#{account}")
+      response = @request.get(url + CREATE_KEY + "?idAccount=#{account}", [jsonHeader])
       generateResponse(response)
     end
 
     def getKeysByType(key, keyType)
       url = pix_url
-      response = @request.get(url + CREATE_KEY + "?key=#{key}&keyType=#{keyType}")
+      response = @request.get(url + CREATE_KEY + "?key=#{key}&keyType=#{keyType}", [jsonHeader])
       generateResponse(response)
     end
 
     def updateKey(body)
       url = pix_url
-      response = @request.put(url + CREATE_KEY, body, [{:key => 'Content-Type', :value => "application/json"}])
+      response = @request.put(url + CREATE_KEY, body, [jsonHeader])
       generateResponse(response)
     end
 
@@ -54,7 +54,7 @@ module CdtBaas
 
     def deleteKey(body)
       url = pix_url
-      response = @request.delete(url + CREATE_KEY, body, [{:key => 'Content-Type', :value => "application/json"}])
+      response = @request.delete(url + CREATE_KEY, body, [jsonHeader])
       generateResponse(response)
     end
 

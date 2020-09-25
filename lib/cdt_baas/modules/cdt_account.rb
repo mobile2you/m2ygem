@@ -47,7 +47,7 @@ module CdtBaas
 		end
 
 		def addNonameCard(body)
-			response = @request.postWithHeader(@url + ACCOUNT_PATH + '/' + body[:id].to_s + '/' + ADD_NONAME_TO_ACCOUNT, body, [{:key => 'Content-Type', :value => "application/json"}])
+			response = @request.postWithHeader(@url + ACCOUNT_PATH + '/' + body[:id].to_s + '/' + ADD_NONAME_TO_ACCOUNT, body, [jsonHeader])
 			person = CdtModel.new(response)
 			person
 		end
@@ -96,14 +96,14 @@ module CdtBaas
 	     end
 
 	     def createDetails(id, body)
-	         response = @request.post(@url + ACCOUNT_PATH + '/' + id.to_s + "/adicionais", body, [{:key => 'Content-Type', :value => "application/json"}])
+	         response = @request.post(@url + ACCOUNT_PATH + '/' + id.to_s + "/adicionais", body, [jsonHeader])
 	         # response = @request.put(@url + ACCOUNT_PATH + CdtHelper.conductorBodyToString(body))
 	         person = CdtModel.new(response)
 	         person
 	     end
 
          def create_temp_card(id)
-             response = @request.post(@url + ACCOUNT_PATH + '/' + id.to_s + CREATE_TEMPORARY_CARD, {}, [{:key => 'Content-Type', :value => "application/json"}])
+             response = @request.post(@url + ACCOUNT_PATH + '/' + id.to_s + CREATE_TEMPORARY_CARD, {}, [jsonHeader])
              card = CdtModel.new(response)
              card
          end

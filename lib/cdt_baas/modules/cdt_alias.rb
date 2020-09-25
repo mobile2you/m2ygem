@@ -8,7 +8,7 @@ module CdtBaas
 
 	 	 def createAlias(body)
 	 	 	 @url = @url.gsub("api.", "aliasbank.")
-             response = @request.postWithHeader(@url + ALIAS_BANK, body, [{:key => 'Content-Type', :value => "application/json"}])
+             response = @request.postWithHeader(@url + ALIAS_BANK, body, [jsonHeader])
 	         person = CdtModel.new(response)
 	         person
 	     end

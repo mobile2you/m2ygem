@@ -9,7 +9,7 @@ module CdtBaas
 
         def createRegistration(body, version = 1)
             @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
-            response = @request.postWithHeader(@url + REGISTRATIONS, body, [{:key => 'Content-Type', :value => "application/json"}])
+            response = @request.postWithHeader(@url + REGISTRATIONS, body, [jsonHeader])
             person = CdtModel.new(response)
             person
         end
@@ -36,14 +36,14 @@ module CdtBaas
         end
         def updateRegistration(id, body, version = 1)
             @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
-            response = @request.put(@url + COMPANY_REGISTRATIONS + '/' + id.to_s, body, [{:key => 'Content-Type', :value => "application/json"}])
+            response = @request.put(@url + COMPANY_REGISTRATIONS + '/' + id.to_s, body, [jsonHeader])
             person = CdtModel.new(response)
             person
         end
 
         def updateRegistrationByIdRegistration(id, body, version = 1)
             @url = @url.gsub("api", "companies") + 'v' + version.to_s + '/'
-            response = @request.put(@url + REGISTRATIONS + '/' + id.to_s, body, [{:key => 'Content-Type', :value => "application/json"}])
+            response = @request.put(@url + REGISTRATIONS + '/' + id.to_s, body, [jsonHeader])
             person = CdtModel.new(response)
             person
         end

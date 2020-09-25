@@ -7,7 +7,7 @@ module CdtBaas
 
 
 		def sendSms(body)
-			response = @request.postWithHeader(@url + SMS_PATH, body, [{:key => 'Content-Type', :value => "application/json"}])
+			response = @request.postWithHeader(@url + SMS_PATH, body, [jsonHeader])
 			phonesResponse = CdtModel.new(response)
 			generateResponse(phonesResponse)
 		end

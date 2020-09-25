@@ -121,19 +121,19 @@ module CdtBaas
 			 end
 
       def createControlLimit(id, body)
-        response = @request.post(@url + CARD + id.to_s + CONTROLS_LIMITS, body, [{:key => 'Content-Type', :value => "application/json"}])
+        response = @request.post(@url + CARD + id.to_s + CONTROLS_LIMITS, body, [jsonHeader])
         card = CdtModel.new(response)
         card
       end
 
       def updateControlLimit(id, control_limit_id, body)
-        response = @request.patch(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id.to_s, body, [{:key => 'Content-Type', :value => "application/json"}])
+        response = @request.patch(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id.to_s, body, [jsonHeader])
         card = CdtModel.new(response)
         card
       end
 
       def getControlLimit(id, control_limit_id)
-        response = @request.get(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id.to_s, {}, [{:key => 'Content-Type', :value => "application/json"}])
+        response = @request.get(@url + CARD + id.to_s + CONTROLS_LIMITS + '/' + control_limit_id.to_s, {}, [jsonHeader])
         card = CdtModel.new(response)
         card
       end
@@ -142,7 +142,7 @@ module CdtBaas
         body = {
           id: 4
         }
-        response = @request.post(@url + CARD + id.to_s + CHANGE_CARD_PHASE, body, [{:key => 'Content-Type', :value => "application/json"}])
+        response = @request.post(@url + CARD + id.to_s + CHANGE_CARD_PHASE, body, [jsonHeader])
         card = CdtModel.new(response)
         card
       end
