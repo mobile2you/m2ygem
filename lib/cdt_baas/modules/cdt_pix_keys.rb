@@ -24,9 +24,14 @@ module CdtBaas
 
     def getKeys(account)
       url = pix_url
-      response = @request.get(url + CREATE_KEY + "?idAccount=#{account}", [jsonHeader])
+      if account.nil?
+        response = @request.get(url + CREATE_KEY , [jsonHeader])
+      else
+        response = @request.get(url + CREATE_KEY + "?idAccount=#{account}", [jsonHeader])
+      end
       generateResponse(response)
     end
+
 
     def getKeysByType(key, keyType)
       url = pix_url
