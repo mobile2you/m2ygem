@@ -74,7 +74,7 @@ module CdtBaas
       validResponse(req)
     end
 
-    def get(url, headers = [], skipValidation = false)
+    def get(url, headers = [], skipValidation = false, follow_redirects = true)
       if headers.length > 0
         headers.each do |header|
           if !header[:key].nil? && !header[:value].nil?
@@ -83,9 +83,12 @@ module CdtBaas
         end
       end
       puts url.to_s
-      req = HTTParty.get(url,
-                         headers: @headers
+      req = HTTParty.get( url,
+                          headers: @headers,
+                          follow_redirects: follow_redirects
                          )
+      return req unless follow_redirects
+
       if skipValidation
         req.parsed_response
       else

@@ -42,5 +42,9 @@ module CdtBaas
 			person
 		end
 
+    def downloadDocument(id)
+      url_request = @url + DOCSPY_DOCUMENTS_V1 + '/' + DOWNLOAD + '/' + id
+      response = @request.get(url_request, [], false, false)
+    end
 	end
 end
