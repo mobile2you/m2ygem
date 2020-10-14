@@ -10,9 +10,9 @@ module CdtBaas
       @url.gsub("api", "pix-baas")
     end
 
-    def checkKey(body)
+    def checkKey(key, account)
       url = pix_url
-      response = @request.get(url + CHECK_KEYS + CdtHelper.conductorBodyToString(body), [jsonHeader])
+      response = @request.get(url + CHECK_KEYS + "/#{key}/account/#{account}", [jsonHeader])
       generateResponse(response)
     end
 
