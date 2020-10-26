@@ -29,5 +29,11 @@ module CdtBaas
       path = "v#{version}"
       @request.get(@url + path + CdtHelper.conductorBodyToString(body))
     end
+
+    def get_pdf(body, version = 1)
+      @url = @url.gsub('api.', 'paymentslip.')
+      path = "v#{version}/pdf"
+      @request.get(@url + path + CdtHelper.conductorBodyToString(body))
+    end
   end
 end
