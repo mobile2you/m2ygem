@@ -51,6 +51,16 @@ module CdtBaas
       generateResponse(response)
     end
 
+    def getKeyClaims(account)
+      url = pix_url
+      if account.nil?
+        response = @request.get(url + CLAIM_KEY , [jsonHeader])
+      else
+        response = @request.get(url + CLAIM_KEY + "?idAccount=#{account}", [jsonHeader])
+      end
+      generateResponse(response)
+    end
+
     def claimKeyConfirmation(body)
       url = pix_url + CLAIM_KEY_CONFIRMATION
       response = @request.post(url, body, true)
