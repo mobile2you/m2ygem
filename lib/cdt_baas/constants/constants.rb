@@ -131,9 +131,9 @@ module CdtBaas
   CLAIM_KEY_CONFIRMATION = "dict/v1/claim-key/confirmation"
 
   STATIC_CODE = "code/v1/static-code"
-  DYNAMIC_CODE = "code/v1/static-code"
+  DYNAMIC_CODE = "code/v1/dynamic-code"
   DECODE_CODE = "code/v1/decode"
-  LIST_CODES = "code/v1/code"
+  LIST_CODES = "code/v1"
 
   PAY_PIX = "transfers/v1"
   LIST_PIX = "transfers/v1/receipts"
