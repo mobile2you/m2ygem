@@ -42,13 +42,13 @@ module CdtBaas
 
     def getReceipts(account, page, from = nil, to = nil)
       url = pix_url
-      response = @request.get(url + LIST_PIX + "?idAccount=#{account}&currentPage=#{page}&from=#{from}&to=#{to}", [jsonHeader])
+      response = @request.get(url + LIST_PIX + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}", [jsonHeader])
       generateResponse(response)
     end
 
-    def getQRCodes(account)
+    def getQRCodes(account, page)
       url = pix_url
-      response = @request.get(url + LIST_CODES + "?idAccount=#{account}", [jsonHeader])
+      response = @request.get(url + LIST_CODES + "?idAccount=#{account}&page=#{page}", [jsonHeader])
       generateResponse(response)
     end
   end
