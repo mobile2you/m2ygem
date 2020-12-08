@@ -45,6 +45,24 @@ module CdtBaas
       response = @request.get(url + LIST_PIX + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}", [jsonHeader])
       generateResponse(response)
     end
+    
+    def getReversalReceipts(account, page, from = nil, to = nil)
+      url = pix_url
+      response = @request.get(url + LIST_PIX_REVERSAL + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}", [jsonHeader])
+      generateResponse(response)
+    end
+
+    def getReceipt(transactionCode)
+      url = pix_url
+      response = @request.get(url + PAY_PIX + '/' + transactionCode + '/' + PIX_RECEIPT, [jsonHeader])
+      generateResponse(response)
+    end
+    
+    def getReversalReceipt(transactionCode)
+      url = pix_url
+      response = @request.get(url + PAY_PIX + '/' + transactionCode + '/' + PIX_RECEIPT_REVERSAL, [jsonHeader])
+      generateResponse(response)
+    end
 
     def getQRCodes(account, page)
       url = pix_url
