@@ -66,7 +66,7 @@ module CdtBaas
 
     def getQRCodes(account, page)
       url = pix_url
-      response = @request.get(url + LIST_CODES + "?idAccount=#{account}&page=#{page}", [jsonHeader])
+      response = @request.get(url + LIST_CODES + "?idAccount=#{account}&page=#{page}&sort=asc", [jsonHeader])
       generateResponse(response)
     end
   end
