@@ -64,9 +64,9 @@ module CdtBaas
       generateResponse(response)
     end
 
-    def getQRCodes(account, page)
+    def getQRCodes(account, page, idTx = 'novalue')
       url = pix_url
-      response = @request.get(url + LIST_CODES + "?idAccount=#{account}&page=#{page}&sort=asc", [jsonHeader])
+      response = @request.get(url + LIST_CODES + "?idAccount=#{account}&page=#{page}&sort=asc&idTx=#{idTx}", [jsonHeader])
       generateResponse(response)
     end
   end
