@@ -138,6 +138,36 @@ module CdtBaas
         card
       end
 
+      def createControlSettings(id, body)
+        response = @request.post(@url + CARD + id.to_s + '/' + CONTROLS_SETTINGS, body, [jsonHeader])
+        card = CdtModel.new(response)
+        card
+      end
+
+      def updateControlSettings(id, control_settings_id, body)
+        response = @request.patch(@url + CARD + id.to_s + '/' + CONTROLS_SETTINGS + '/' + control_settings_id.to_s, body, [jsonHeader])
+        card = CdtModel.new(response)
+        card
+      end
+
+      def listControlSettings(body = nil)
+        response = @request.get(@url + CARD + CONTROLS_SETTINGS + CdtHelper.conductorBodyToString(body))
+        card = CdtModel.new(response)
+        card
+      end
+
+      def getControlSettings(id, control_settings_id)
+        response = @request.get(@url + CARD + id.to_s + '/' + CONTROLS_SETTINGS + '/' + control_settings_id.to_s)
+        card = CdtModel.new(response)
+        card
+      end
+
+      def deleteControlSettings(id, control_settings_id)
+        response = @request.delete(@url + CARD + id.to_s + '/' + CONTROLS_SETTINGS + '/' + control_settings_id.to_s)
+        card = CdtModel.new(response)
+        card
+      end
+
       def enableCardToBeUnlocked(id)
         body = {
           id: 4
