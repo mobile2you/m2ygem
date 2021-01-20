@@ -1,38 +1,39 @@
 module CdtBaas
+  class CdtPaymentSplip < CdtModule
+    def initialize(token, env)
+      startModule(token, env)
+    end
 
-	class CdtPaymentSplip < CdtModule
+    def create_recharge(body, version = 1)
+      @url = @url.gsub('api.', 'paymentslip.')
+      path = "v#{version}/#{PAYMENT_SLIP_RECHARGE}"
+      @request.postWithHeader(@url + path, body, [{ key: 'Content-Type', value: 'application/json' }])
+    end
 
-		def initialize(token, env)
-			startModule(token, env)
-		end
+    def recharges(body, version = 1)
+      @url = @url.gsub('api.', 'paymentslip.')
+      path = "v#{version}/#{PAYMENT_SLIP_RECHARGE}"
+      @request.get(@url + path + CdtHelper.conductorBodyToString(body))
+    end
 
-	 	 def createRecharge(body)
-	 	 	 @url = @url.gsub("api.", "paymentslip.")
-             response = @request.postWithHeader(@url + PAYMENT_SLIP_RECHARGE, body, [jsonHeader])
-	         person = CdtModel.new(response)
-	         person
-	     end
+    def create_invoice(params, version = 1)
+      @url = @url.gsub('api.', 'paymentslip.')
+      path = "v#{version}/#{PAYMENT_SLIP_INVOICE}"
+      path = path + CdtHelper.conductorBodyToString(params[:query_params]) if params[:query_params]
+      params = params[:body_params]
+      @request.postWithHeader(@url + path, params, [{ key: 'Content-Type', value: 'application/json' }])
+    end
 
-	 	 def getRecharges(body)
-	 	 	 @url = @url.gsub("api.", "paymentslip.")
-	         response = @request.get(@url + PAYMENT_SLIP_RECHARGE + CdtHelper.conductorBodyToString(body))
-	         person = CdtModel.new(response)
-	         person
-	     end
+    def invoices(body, version = 1)
+      @url = @url.gsub('api.', 'paymentslip.')
+      path = "v#{version}"
+      @request.get(@url + path + CdtHelper.conductorBodyToString(body))
+    end
 
-	 	 def createInvoice(body)
-	 	 	 @url = @url.gsub("api.", "paymentslip.")
-             response = @request.postWithHeader(@url + PAYMENT_SLIP_INVOICE, body, [jsonHeader])
-	         person = CdtModel.new(response)
-	         person
-	     end
-
-	 	 def getInvoices(body)
-	 	 	 @url = @url.gsub("api.", "paymentslip.")
-	         response = @request.get(@url + PAYMENT_SLIP_INVOICE + CdtHelper.conductorBodyToString(body))
-	         person = CdtModel.new(response)
-	         person
-	     end
-
-	end
+    def get_pdf(body, version = 1)
+      @url = @url.gsub('api.', 'paymentslip.')
+      path = "v#{version}/pdf"
+      @request.get(@url + path + CdtHelper.conductorBodyToString(body))
+    end
+  end
 end
