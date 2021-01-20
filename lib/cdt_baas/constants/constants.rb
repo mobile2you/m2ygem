@@ -137,7 +137,10 @@ module CdtBaas
 
   PAY_PIX = "transfers/v1"
   LIST_PIX = "transfers/v1/receipts"
+  LIST_PIX_REVERSAL = "transfers/v1/reversal/receipts"
   CANCEL_PIX = "transfers/v1/reversal"
+  PIX_RECEIPT = 'status'
+  PIX_RECEIPT_REVERSAL = 'reversal'
 
   DOWNLOAD = 'download'
   DOCSPY_DOCUMENTS_V1 = 'docspy/v1/documents'
