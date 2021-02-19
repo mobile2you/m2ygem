@@ -40,9 +40,9 @@ module CdtBaas
       generateResponse(response)
     end
 
-    def getReceipts(account, page, from = nil, to = nil)
+    def getReceipts(account, page, from = nil, to = nil, idEndToEnd = nil)
       url = pix_url
-      response = @request.get(url + LIST_PIX + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}", [jsonHeader])
+      response = @request.get(url + LIST_PIX + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}&idEndToEnd=#{idEndToEnd}", [jsonHeader])
       generateResponse(response)
     end
     
