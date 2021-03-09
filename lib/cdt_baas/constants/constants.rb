@@ -117,6 +117,8 @@ module CdtBaas
   CONTROLS_LIMITS = "/controles-limites"
   CREATE_TEMPORARY_CARD = '/gerar-cartao-provisorio'
   CONTROLS_SETTINGS = 'controles-configuracoes'
+  REPORTS = 'reports'
+  REQUESTS = 'requests'
 
   CONFIRM_ORDER = '/confirm'
   CREATE_ORDER = '/create'
