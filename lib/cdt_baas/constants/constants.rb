@@ -13,6 +13,8 @@ module CdtBaas
   #auth_url
   TOKEN_HML = "https://auth.hml.caradhras.io/"
   TOKEN_PRD = "https://auth.caradhras.io/"
+  TOKEN_DOCKNITO_HML = "https://auth2.hml.caradhras.io/"
+  TOKEN_DOCKNITO_PRD = "https://auth2.caradhras.io/"
 
   #custom_auth
   TOKEN_CUSTOM_AUTH = ENV["CUSTOM_AUTH_URL"]
@@ -22,6 +24,7 @@ module CdtBaas
 
   API = "api/"
   TOKEN_PATH = "oauth2/token?grant_type=client_credentials"
+  TOKEN_DOCKNITO_PATH = "token?grant_type=client_credentials"
   DETAILS = "details"
   RATE = "rate/"
   ACCOUNT = "account/"
