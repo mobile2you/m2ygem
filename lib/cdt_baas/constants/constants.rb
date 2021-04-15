@@ -145,6 +145,8 @@ module CdtBaas
   PIX_RECEIPT = 'status'
   PIX_RECEIPT_REVERSAL = 'reversal'
 
+  PIX_LIMITS = 'limits/v1'
+
   DOWNLOAD = 'download'
   DOCSPY_DOCUMENTS_V1 = 'docspy/v1/documents'
 end

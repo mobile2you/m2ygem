@@ -10,6 +10,10 @@ module CdtBaas
       @url.gsub("api", "pix-baas")
     end
 
+    def pix_limits_url
+      @url.gsub("api", "limits")
+    end
+
     def createStaticCode(body)
       url = pix_url + STATIC_CODE
       response = @request.post(url, body, true)
@@ -67,6 +71,24 @@ module CdtBaas
     def getQRCodes(account, page, idTx = 'novalue')
       url = pix_url
       response = @request.get(url + LIST_CODES + "?idAccount=#{account}&page=#{page}&sort=asc&idTx=#{idTx}", [jsonHeader])
+      generateResponse(response)
+    end
+
+    def createPixTransactionLimit(body)
+      url = pix_limits_url + PIX_LIMITS
+      response = @request.post(url, body, true)
+      generateResponse(response)
+    end
+
+    def listPixTransactionLimits(body)
+      url = pix_limits_url + PIX_LIMITS
+      response = @request.get(url + CdtHelper.conductorBodyToString(body), [jsonHeader])
+      generateResponse(response)
+    end
+
+    def getPixTransactionLimits(account)
+      url = "#{pix_limits_url}#{PIX_LIMITS}/account/#{account}"
+      response = @request.get(url, [jsonHeader])
       generateResponse(response)
     end
   end
