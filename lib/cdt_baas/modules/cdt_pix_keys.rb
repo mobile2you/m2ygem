@@ -56,7 +56,7 @@ module CdtBaas
       if account.nil?
         response = @request.get(url + CLAIM_KEY , [jsonHeader])
       else
-        response = @request.get(url + CLAIM_KEY + "?idAccount=#{account}", [jsonHeader])
+        response = @request.get(url + CLAIM_KEY + "?idAccount=#{account}&limit=100", [jsonHeader])
       end
       generateResponse(response)
     end
