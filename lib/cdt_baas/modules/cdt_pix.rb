@@ -91,5 +91,25 @@ module CdtBaas
       response = @request.get(url, [jsonHeader])
       generateResponse(response)
     end
+
+
+    def schedulePix(body)
+      url = pix_url + PIX_SCHEDULER
+      response = @request.post(url, body, true)
+      generateResponse(response)
+    end
+
+    def getScheduledPix(body)
+      url = pix_url + PIX_SCHEDULER
+      response = @request.get(url + CdtHelper.conductorBodyToString(body), [jsonHeader])
+      generateResponse(response)
+    end
+
+    def cancelScheduledPix(id)
+      url = pix_url + PIX_SCHEDULER + "/#{id}"
+      response = @request.delete(url)
+      generateResponse(response)
+    end
+
   end
 end

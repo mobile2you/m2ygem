@@ -147,6 +147,8 @@ module CdtBaas
 
   PIX_LIMITS = 'limits/v1'
 
+  PIX_SCHEDULER = "scheduler/v1/transfers"
+
   DOWNLOAD = 'download'
   DOCSPY_DOCUMENTS_V1 = 'docspy/v1/documents'
 end
