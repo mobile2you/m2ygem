@@ -1,3 +1,5 @@
+require 'date'
+
 module CdtBaas
 
   class CdtPix < CdtModule
@@ -50,7 +52,14 @@ module CdtBaas
 
     def getReceipts(account, page, from = nil, to = nil, idEndToEnd = nil)
       url = pix_url
-      response = @request.get(url + LIST_PIX + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}&idEndToEnd=#{idEndToEnd}", [jsonHeader])
+      endpoint = if Date.today > Date.new(2021,11,30)
+                  # New receipts endpoint - valid starting from Dec 01, 2021
+                  NEW_LIST_PIX
+                 else
+                  # Deprecated on Dec 01, 2021
+                  LIST_PIX
+                 end
+      response = @request.get(url + endpoint + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}&idEndToEnd=#{idEndToEnd}", [jsonHeader])
       generateResponse(response)
     end
 

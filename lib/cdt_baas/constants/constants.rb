@@ -1,5 +1,5 @@
 module CdtBaas
-  
+
   #envs
   HOMOLOGATION = "hml"
   PRODUCTION = "prd"
@@ -140,6 +140,7 @@ module CdtBaas
 
   PAY_PIX = "transfers/v1"
   LIST_PIX = "transfers/v1/receipts"
+  NEW_LIST_PIX = "transfers/v1/receipts-list"
   LIST_PIX_REVERSAL = "transfers/v1/reversal/receipts"
   CANCEL_PIX = "transfers/v1/reversal"
   PIX_RECEIPT = 'status'
