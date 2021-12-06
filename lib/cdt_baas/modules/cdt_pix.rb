@@ -1,3 +1,5 @@
+require 'date'
+
 module CdtBaas
 
   class CdtPix < CdtModule
@@ -10,12 +12,12 @@ module CdtBaas
       @url.gsub("api", "pix-baas")
     end
 
-    def pix_schedule_url
-      @url.gsub("api", "pix-baas")
-    end
-
     def pix_limits_url
       @url.gsub("api", "limits")
+    end
+
+    def scheduled_pix_url
+      @url.gsub("api", "pix")
     end
 
     def createStaticCode(body)
@@ -50,10 +52,17 @@ module CdtBaas
 
     def getReceipts(account, page, from = nil, to = nil, idEndToEnd = nil)
       url = pix_url
-      response = @request.get(url + LIST_PIX + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}&idEndToEnd=#{idEndToEnd}", [jsonHeader])
+      endpoint = if Date.today > Date.new(2021,11,30)
+                  # New receipts endpoint - valid starting from Dec 01, 2021
+                  NEW_LIST_PIX
+                 else
+                  # Deprecated on Dec 01, 2021
+                  LIST_PIX
+                 end
+      response = @request.get(url + endpoint + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}&idEndToEnd=#{idEndToEnd}", [jsonHeader])
       generateResponse(response)
     end
-    
+
     def getReversalReceipts(account, page, from = nil, to = nil)
       url = pix_url
       response = @request.get(url + LIST_PIX_REVERSAL + "?idAccount=#{account}&page=#{page}&from=#{from}&to=#{to}", [jsonHeader])
@@ -65,7 +74,7 @@ module CdtBaas
       response = @request.get(url + PAY_PIX + '/' + transactionCode + '/' + PIX_RECEIPT, [jsonHeader])
       generateResponse(response)
     end
-    
+
     def getReversalReceipt(transactionCode)
       url = pix_url
       response = @request.get(url + PAY_PIX + '/' + transactionCode + '/' + PIX_RECEIPT_REVERSAL, [jsonHeader])
@@ -98,19 +107,19 @@ module CdtBaas
 
 
     def schedulePix(body)
-      url = pix_schedule_url + PIX_SCHEDULER
+      url = scheduled_pix_url + PIX_SCHEDULER
       response = @request.post(url, body, true)
       generateResponse(response)
     end
 
     def getScheduledPix(body)
-      url = pix_schedule_url + PIX_SCHEDULER
+      url = scheduled_pix_url + PIX_SCHEDULER
       response = @request.get(url + CdtHelper.conductorBodyToString(body), [jsonHeader])
       generateResponse(response)
     end
 
     def cancelScheduledPix(id)
-      url = pix_schedule_url + PIX_SCHEDULER + "/#{id}"
+      url = scheduled_pix_url + PIX_SCHEDULER + "/#{id}"
       response = @request.delete(url)
       generateResponse(response)
     end
