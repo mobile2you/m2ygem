@@ -10,6 +10,10 @@ module CdtBaas
       @url.gsub("api", "pix-baas")
     end
 
+    def pix_schedule_url
+      @url.gsub("api", "pix-baas")
+    end
+
     def pix_limits_url
       @url.gsub("api", "limits")
     end
@@ -94,19 +98,19 @@ module CdtBaas
 
 
     def schedulePix(body)
-      url = pix_url + PIX_SCHEDULER
+      url = pix_schedule_url + PIX_SCHEDULER
       response = @request.post(url, body, true)
       generateResponse(response)
     end
 
     def getScheduledPix(body)
-      url = pix_url + PIX_SCHEDULER
+      url = pix_schedule_url + PIX_SCHEDULER
       response = @request.get(url + CdtHelper.conductorBodyToString(body), [jsonHeader])
       generateResponse(response)
     end
 
     def cancelScheduledPix(id)
-      url = pix_url + PIX_SCHEDULER + "/#{id}"
+      url = pix_schedule_url + PIX_SCHEDULER + "/#{id}"
       response = @request.delete(url)
       generateResponse(response)
     end
