@@ -10,7 +10,7 @@ module CdtBaas
       body =
       {
         "idOriginAccount": original_body[:idOriginAccount],
-        "identificator": original_body[:identificator],
+        "identificator": Time.now.to_i.to_s,
         "description": original_body[:description],
         "beneficiary": {
           "type": original_body[:beneficiary][:type],
