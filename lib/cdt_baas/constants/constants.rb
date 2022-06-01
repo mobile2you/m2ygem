@@ -114,6 +114,7 @@ module CdtBaas
   DOCSPY_DOCUMENTS_RULES = "docspy/documents/rules"
   DOCSPY_SELFIES_RULES = "docspy/selfies/rules"
   DOCUMENTS = "documents"
+  PENDING_DOCUMENTS = "documents/status"
   CONTROLS_LIMITS = "/controles-limites"
   CREATE_TEMPORARY_CARD = '/gerar-cartao-provisorio'
   CONTROLS_SETTINGS = 'controles-configuracoes'
