@@ -87,8 +87,8 @@ module CdtBaas
       generateResponse(response)
     end
 
-    def createPixTransactionLimit(body)
-      url = pix_limits_url + PIX_LIMITS
+    def createPixTransactionLimit(body, account)
+      url = "#{pix_limits_url}#{PIX_LIMITS}/accounts/#{account}/services-groups/1"
       response = @request.post(url, body, true)
       generateResponse(response)
     end
