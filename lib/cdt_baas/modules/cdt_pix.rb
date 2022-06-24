@@ -100,11 +100,11 @@ module CdtBaas
     end
 
     def getPixTransactionLimits(account)
-      url = "#{pix_limits_url}#{PIX_LIMITS}/account/#{account}"
+      url = "#{pix_limits_url}#{PIX_LIMITS}/accounts/#{account}"
+      url += CdtHelper.conductorBodyToString({ idServicesGroup: '1' })
       response = @request.get(url, [jsonHeader])
       generateResponse(response)
     end
-
 
     def schedulePix(body)
       url = scheduled_pix_url + PIX_SCHEDULER
