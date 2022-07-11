@@ -25,8 +25,8 @@ module CdtBaas
             person
         end
 
-        def findPerson(id, version = 2)
-            response = @request.get(@url + "v#{version}/" + INDIVIDUALS + '/' + id.to_s)
+        def findPerson(id, version = 2, params: {})
+            response = @request.get(@url + "v#{version}/" + INDIVIDUALS + '/' + id.to_s + CdtHelper.conductorBodyToString(params))
             person = CdtModel.new(response)
             person
         end
