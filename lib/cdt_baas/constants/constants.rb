@@ -128,6 +128,13 @@ module CdtBaas
   CHANGE_CARD_PHASE = '/alterar-estagio'
   UPDATE_MAILING_ADDRESS = '/alterar-endereco-correspondencia'
 
+  #TED ONLINE
+
+  PAY_CASHOUT = "v1/cashout"
+  CASHOUT_CANCEL = "v1/cashout/cancel-schedule"
+  TRANSACTIONS_CASHOUT = "v1/cashout/transactions"
+  RECEIPT_CASHOUT= "v1/cashout/receipt/"
+
   #pix
   CHECK_KEYS = "dict/v1/validate"
   CREATE_KEY = "dict/v1"
