@@ -42,5 +42,54 @@ module CdtBaas
       generateResponse(transferResponse)
     end
 
+    #TED ONLINE
+
+    def bankTransfersCashout(original_body)
+      body =
+      {
+        "accountId": original_body[:accountId],
+        "sourceBankNumber": original_body[:sourceBankNumber],
+        "beneficiary": {
+          "type": original_body[:beneficiary][:type],
+          "name": original_body[:beneficiary][:name],
+          "nationalRegistration": original_body[:beneficiary][:nationalRegistration],
+          "bankNumber": original_body[:beneficiary][:bankNumber],
+          "bankBranchNumber": original_body[:beneficiary][:bankBranchNumber],
+          "bankBranchDigit": original_body[:beneficiary][:bankBranchDigit],
+          "bankAccountNumber": original_body[:beneficiary][:bankAccountNumber],
+          "bankAccountDigit": original_body[:beneficiary][:bankAccountDigit],
+          "bankAccountType": original_body[:beneficiary][:bankAccountType],
+          "accountId": original_body[:beneficiary][:accountId]
+        },
+        "amount": original_body[:amount],
+        "description": original_body[:description],
+        "transferType": original_body[:type]
+      }
+      response = @request.post(@url + PAY_CASHOUT, body, true)
+      transferResponse = CdtModel.new(response)
+      generateResponse(transferResponse)
+    end
+
+    def bankTransfersCancelCashout(id_transaction)
+      body = {
+        "transactionId": id_transaction
+      }
+      response = @request.post(@url + CASHOUT_CANCEL)
+      transferResponse = CdtModel.new(response, body, true)
+      generateResponse(transferResponse)
+    end
+
+    def getBankTransfersCashout()
+      response = @request.get(@url + TRANSACTIONS_CASHOUT)
+      transferResponse = response
+      generateResponse(transferResponse)
+    end
+
+    def getBankTransfersReceiptCashout(id)
+      response = @request.get(@url + RECEIPT_CASHOUT + id.to_s)
+      transferResponse = response
+      generateResponse(transferResponse)
+    end
+
   end
 end
