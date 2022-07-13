@@ -47,23 +47,23 @@ module CdtBaas
     def bankTransfersCashout(original_body)
       body =
       {
-        "accountId": original_body[:accountId],
-        "sourceBankNumber": original_body[:sourceBankNumber],
+        "accountId": original_body[:idOriginAccount],
+        "sourceBankNumber": original_body[:sourceBankNumber], 
         "beneficiary": {
           "type": original_body[:beneficiary][:type],
           "name": original_body[:beneficiary][:name],
-          "nationalRegistration": original_body[:beneficiary][:nationalRegistration],
-          "bankNumber": original_body[:beneficiary][:bankNumber],
-          "bankBranchNumber": original_body[:beneficiary][:bankBranchNumber],
-          "bankBranchDigit": original_body[:beneficiary][:bankBranchDigit],
-          "bankAccountNumber": original_body[:beneficiary][:bankAccountNumber],
-          "bankAccountDigit": original_body[:beneficiary][:bankAccountDigit],
-          "bankAccountType": original_body[:beneficiary][:bankAccountType],
-          "accountId": original_body[:beneficiary][:accountId]
+          "nationalRegistration": original_body[:beneficiary][:docIdCpfCnpjEinSSN],
+          "bankNumber": original_body[:beneficiary][:bankId],
+          "bankBranchNumber": original_body[:beneficiary][:agency],
+          "bankBranchDigit": "",
+          "bankAccountNumber": original_body[:beneficiary][:account],
+          "bankAccountDigit": original_body[:beneficiary][:accountDigit],
+          "bankAccountType": original_body[:beneficiary][:accountType],
+          "accountId": original_body[:beneficiary][:idBeneficiaryAccount]
         },
-        "amount": original_body[:amount],
+        "amount": original_body[:value],
         "description": original_body[:description],
-        "transferType": original_body[:type]
+        "transferType": 3
       }
       response = @request.post(@url + PAY_CASHOUT, body, true)
       transferResponse = CdtModel.new(response)
