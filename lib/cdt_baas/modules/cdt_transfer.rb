@@ -79,9 +79,9 @@ module CdtBaas
       generateResponse(transferResponse)
     end
 
-    def getBankTransfersCashout
+    def getBankTransfersCashout(account, limit = 20, page = 0)
       @url = @url.include?('hml') ? URL_CUSTOM_TRANSFER_HML : URL_CUSTOM_TRANSFER
-      response = @request.get(@url + TRANSACTIONS_CASHOUT)
+      response = @request.get(@url + TRANSACTIONS_CASHOUT + "?accountId=#{account}&limit=#{limit}&page=#{page}")
       transferResponse = response
       generateResponse(transferResponse)
     end
