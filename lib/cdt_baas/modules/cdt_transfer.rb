@@ -44,25 +44,26 @@ module CdtBaas
 
     def bankTransfersCashout(original_body)
       body =
-      {
-        "accountId": original_body[:idOriginAccount],
-        "sourceBankNumber": original_body[:sourceBankNumber], 
-        "beneficiary": {
-          "type": original_body[:beneficiary][:type],
-          "name": original_body[:beneficiary][:name],
-          "nationalRegistration": original_body[:beneficiary][:docIdCpfCnpjEinSSN],
-          "bankNumber": original_body[:beneficiary][:bankId],
-          "bankBranchNumber": original_body[:beneficiary][:agency],
-          "bankBranchDigit": original_body[:beneficiary][:agency_digit].nil? ? '' : original_body[:beneficiary][:agency_digit],
-          "bankAccountNumber": original_body[:beneficiary][:account],
-          "bankAccountDigit": original_body[:beneficiary][:accountDigit],
-          "bankAccountType": original_body[:beneficiary][:accountType].upcase,
-          "accountId": original_body[:beneficiary][:idBeneficiaryAccount]
-        },
-        "amount": original_body[:value],
-        "description": original_body[:description],
-        "transferType": original_body[:transferType].present? ? original_body[:transferType] : 3
-      }
+        {
+          "accountId": original_body[:idOriginAccount],
+          "sourceBankNumber": original_body[:sourceBankNumber],
+          "beneficiary": {
+            "type": original_body[:beneficiary][:type],
+            "name": original_body[:beneficiary][:name],
+            "nationalRegistration": original_body[:beneficiary][:docIdCpfCnpjEinSSN],
+            "bankNumber": original_body[:beneficiary][:bankId],
+            "bankBranchNumber": original_body[:beneficiary][:agency],
+            "bankBranchDigit": original_body[:beneficiary][:agencyDigit],
+            "bankAccountNumber": original_body[:beneficiary][:account],
+            "bankAccountDigit": original_body[:beneficiary][:accountDigit],
+            "bankAccountType": original_body[:beneficiary][:accountType].upcase,
+            "accountId": original_body[:beneficiary][:idBeneficiaryAccount]
+          },
+          "amount": original_body[:value],
+          "description": original_body[:description],
+          "transferType": original_body[:transferType].present? ? original_body[:transferType] : 3
+        }
+      body[:beneficiary].delete(:bankBranchDigit) if body[:beneficiary][:bankBranchDigit].blank?
       @url = @url.include?('hml') ? URL_CUSTOM_TRANSFER_HML : URL_CUSTOM_TRANSFER
       response = @request.post(@url + PAY_CASHOUT, body, true)
       transferResponse = CdtModel.new(response)
