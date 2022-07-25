@@ -52,6 +52,7 @@ module CdtBaas
   PAYMENT_VALIDATE = 'payments/validate/'
   VALIDATE = 'validate/'
   P2P_ADJUSTMENT = 'p2ptransfer/adjustment/'
+  TED_ADJUSTMENT = 'banktransfers/adjustment/'
   PAYMENT_ADJUSTMENT = 'payments/adjustment/'
   BANK_SLIP = 'boletos'
   CARD_PLAIN = 'cartoes'

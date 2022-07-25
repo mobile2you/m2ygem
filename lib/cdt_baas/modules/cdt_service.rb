@@ -30,5 +30,10 @@ module CdtBaas
 			generateResponse(p2pResponse)
 		end
 
+		def findtedAdjustment(id)
+			response = @request.get(@url + TED_ADJUSTMENT + id.to_s)
+			tedResponse = response
+			generateResponse(tedResponse)
+		end
 	end
 end
