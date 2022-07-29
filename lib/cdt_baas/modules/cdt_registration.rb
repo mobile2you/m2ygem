@@ -6,7 +6,6 @@ module CdtBaas
 
     def createRegistration(body, version = 1)
       @url = @url.gsub('api', 'companies') + 'v' + version.to_s + '/'
-      byebug
       body[:company].delete(:tradeName) if body[:company][:tradename].blank?
       response = @request.postWithHeader(@url + REGISTRATIONS, body, [jsonHeader])
       CdtModel.new(response)
