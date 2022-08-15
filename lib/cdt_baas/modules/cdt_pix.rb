@@ -87,25 +87,6 @@ module CdtBaas
       generateResponse(response)
     end
 
-    def createPixTransactionLimit(body, account)
-      url = "#{pix_limits_url}#{PIX_LIMITS}/accounts/#{account}/services-groups/1"
-      response = @request.post(url, body, true)
-      generateResponse(response)
-    end
-
-    def listPixTransactionLimits(body)
-      url = pix_limits_url + PIX_LIMITS
-      response = @request.get(url + CdtHelper.conductorBodyToString(body), [jsonHeader])
-      generateResponse(response)
-    end
-
-    def getPixTransactionLimits(account)
-      url = "#{pix_limits_url}#{PIX_LIMITS}/accounts/#{account}"
-      url += CdtHelper.conductorBodyToString({ idServicesGroup: '1' })
-      response = @request.get(url, [jsonHeader])
-      generateResponse(response)
-    end
-
     def schedulePix(body)
       url = scheduled_pix_url + PIX_SCHEDULER
       response = @request.post(url, body, true)
