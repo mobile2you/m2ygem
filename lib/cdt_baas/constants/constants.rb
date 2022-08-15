@@ -155,7 +155,7 @@ module CdtBaas
   PIX_RECEIPT = 'status'
   PIX_RECEIPT_REVERSAL = 'reversal'
 
-  PIX_LIMITS = 'limits/v2'
+  LIMITS = 'limits/v2'
 
   PIX_SCHEDULER = 'scheduler/v1/transfers'
 
