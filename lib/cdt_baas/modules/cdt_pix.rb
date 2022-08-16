@@ -88,19 +88,19 @@ module CdtBaas
     end
 
     def createPixTransactionLimit(body, account)
-      url = "#{pix_limits_url}#{PIX_LIMITS}/accounts/#{account}/services-groups/1"
+      url = "#{pix_limits_url}#{LIMITS}/accounts/#{account}/services-groups/1"
       response = @request.post(url, body, true)
       generateResponse(response)
     end
 
     def listPixTransactionLimits(body)
-      url = pix_limits_url + PIX_LIMITS
+      url = pix_limits_url + LIMITS
       response = @request.get(url + CdtHelper.conductorBodyToString(body), [jsonHeader])
       generateResponse(response)
     end
 
     def getPixTransactionLimits(account)
-      url = "#{pix_limits_url}#{PIX_LIMITS}/accounts/#{account}"
+      url = "#{pix_limits_url}#{LIMITS}/accounts/#{account}"
       url += CdtHelper.conductorBodyToString({ idServicesGroup: '1' })
       response = @request.get(url, [jsonHeader])
       generateResponse(response)

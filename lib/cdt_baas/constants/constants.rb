@@ -136,6 +136,9 @@ module CdtBaas
   TRANSACTIONS_CASHOUT = 'v1/cashout/transactions'
   RECEIPT_CASHOUT = 'v1/cashout/receipt/'
 
+  # LIMITS
+  LIMITS = 'limits/v2'
+
   # pix
   CHECK_KEYS = 'dict/v1/validate'
   CREATE_KEY = 'dict/v1'
@@ -154,8 +157,6 @@ module CdtBaas
   CANCEL_PIX = 'transfers/v1/reversal'
   PIX_RECEIPT = 'status'
   PIX_RECEIPT_REVERSAL = 'reversal'
-
-  PIX_LIMITS = 'limits/v2'
 
   PIX_SCHEDULER = 'scheduler/v1/transfers'
 
