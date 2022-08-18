@@ -31,6 +31,12 @@ module CdtBaas
       generateResponse(response)
     end
 
+    def update_account_timetables(body, account)
+      url = "#{limits_url}#{LIMITS}/accounts/#{account}/timetables"
+      response = @request.put(url, body)
+      generateResponse(response)
+    end
+
     def list_limits_all_groups(body)
       url = limits_url + LIMITS
       response = @request.get(url + CdtHelper.conductorBodyToString(body), [jsonHeader])
