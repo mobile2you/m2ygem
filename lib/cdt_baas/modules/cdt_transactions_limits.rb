@@ -18,28 +18,35 @@ module CdtBaas
       response = @request.get(url, [jsonHeader])
       generateResponse(response)
     end
-
+    
     def create_limit(body, account, group)
       url = "#{limits_url}#{LIMITS}/accounts/#{account}/services-groups/#{group.to_i}"
       response = @request.post(url, body, true)
       generateResponse(response)
     end
-
+    
     def list_account_timetables(account)
       url = "#{limits_url}#{LIMITS}/accounts/#{account}/timetables"
       response = @request.get(url, [jsonHeader])
       generateResponse(response)
     end
-
+    
     def update_account_timetables(body, account)
       url = "#{limits_url}#{LIMITS}/accounts/#{account}/timetables"
       response = @request.put(url, body)
       generateResponse(response)
     end
-
+    
     def list_limits_all_groups(body)
       url = limits_url + LIMITS
       response = @request.get(url + CdtHelper.conductorBodyToString(body), [jsonHeader])
+      generateResponse(response)
+    end
+
+    def trusted_destinations(account, group)
+      url = "#{limits_url}#{LIMITS}/accounts/#{account}/trusted-destinations"
+      url += CdtHelper.conductorBodyToString({ idServicesGroup: group.to_i })
+      response = @request.get(url, [jsonHeader])
       generateResponse(response)
     end
   end
