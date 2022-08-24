@@ -6,7 +6,8 @@ module CdtBaas
 
     def createRegistration(body, version = 1)
       @url = @url.gsub('api', 'companies') + 'v' + version.to_s + '/'
-      body[:company].delete(:tradeName) if body[:company][:tradename].blank?
+      #@Note: This Dock Param is optional. Client firstly asked to made it so. But regretted it. So, we are not using it. If needed, uncomment this line.
+      # body[:company].delete(:tradeName) if body[:company][:tradeName].blank?
       response = @request.postWithHeader(@url + REGISTRATIONS, body, [jsonHeader])
       CdtModel.new(response)
     end
