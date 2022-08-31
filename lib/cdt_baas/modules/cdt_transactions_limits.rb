@@ -48,7 +48,7 @@ module CdtBaas
       generateResponse(response)
     end
 
-    def create_batch_limit_for_trusted_destination(body, account, _group)
+    def create_batch_limit_for_trusted_destination(body, account)
       request = []
       pending = []
       g = 1
