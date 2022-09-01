@@ -54,7 +54,7 @@ module CdtBaas
       generateResponse(list)
     end
 
-    def revome_trusted_destinations(account, id)
+    def remove_trusted_destinations(account, id)
       url = "#{limits_url}#{LIMITS}/accounts/#{account}/trusted-destinations/#{id}"
       response = @request.delete(url)
       generateResponse(response)
