@@ -41,10 +41,22 @@ module CdtBaas
       generateResponse(response)
     end
 
-    def trusted_destinations(account, group)
-      url = "#{limits_url}#{LIMITS}/accounts/#{account}/trusted-destinations"
-      url += CdtHelper.conductorBodyToString({ idServicesGroup: group.to_i })
-      response = @request.get(url, [jsonHeader])
+    def trusted_destinations(account)
+      list = []
+      g = 1
+      5.times do
+        url = "#{limits_url}#{LIMITS}/accounts/#{account}/trusted-destinations"
+        url += CdtHelper.conductorBodyToString({ idServicesGroup: g })
+        response = @request.get(url, [jsonHeader])
+        list.push response unless response.blank?
+        g += 1
+      end
+      generateResponse(list)
+    end
+
+    def revome_trusted_destinations(account, id)
+      url = "#{limits_url}#{LIMITS}/accounts/#{account}/trusted-destinations/#{id}"
+      response = @request.delete(url)
       generateResponse(response)
     end
 
