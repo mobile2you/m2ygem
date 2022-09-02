@@ -31,6 +31,12 @@ module CdtBaas
             person
         end
 
+        def findPersonSPD(id, version = 2)
+            response = @request.get(@url + "v#{version}/" + INDIVIDUALS + '/' + id.to_s + "?statusSPD=true")
+            person = CdtModel.new(response)
+            person
+        end
+
         def getPersons(body, version = 2)
             response = @request.get(@url + "v#{version}/" + INDIVIDUALS + CdtHelper.conductorBodyToString(body))
             person = CdtModel.new(response)
