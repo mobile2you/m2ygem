@@ -54,6 +54,18 @@ module CdtBaas
       CdtModel.new(response)
     end
 
+    def sendDocumentPNG(registration_id, params, options, version = 1)
+      @url = @url.gsub('api', 'companies') + 'v' + version.to_s + '/'
+      options[:headers] = {
+        'Content-Type' => 'image/png'
+      }
+
+      response = @request.postBinary(
+        @url + REGISTRATIONS + '/' + registration_id.to_s + '/' + DOCUMENTS + CdtHelper.conductorBodyToString(params), options
+      )
+      CdtModel.new(response)
+    end
+
     def sendDocumentPdf(registration_id, params, options, version = 1)
       @url = @url.gsub('api', 'companies') + 'v' + version.to_s + '/'
       options[:headers] = {
