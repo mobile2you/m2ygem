@@ -11,9 +11,8 @@ module CdtBaas
     end
 
     def list_limits(account, group)
-      url = "#{limits_url}#{LIMITS}/accounts/#{account}"
-      url += CdtHelper.conductorBodyToString({ idServicesGroup: group.to_i })
-      response = @request.get(url, [jsonHeader])
+      url = "#{limits_url}#{LIMITS}/accounts/#{account}?idServicesGroup=#{group.to_i}"
+      response = @request.get(url)
       generateResponse(response)
     end
 
