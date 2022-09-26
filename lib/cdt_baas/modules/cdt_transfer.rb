@@ -56,8 +56,7 @@ module CdtBaas
             "bankBranchDigit": original_body[:beneficiary][:agencyDigit],
             "bankAccountNumber": original_body[:beneficiary][:account],
             "bankAccountDigit": original_body[:beneficiary][:accountDigit],
-            "bankAccountType": original_body[:beneficiary][:accountType].upcase,
-            "accountId": original_body[:beneficiary][:idBeneficiaryAccount]
+            "bankAccountType": original_body[:beneficiary][:accountType].upcase
           },
           "amount": original_body[:value],
           "description": original_body[:description],
