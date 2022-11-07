@@ -17,5 +17,10 @@ module CdtBaas
       CdtHelper.saveToken(@basic, token.access_token)
       CdtHelper.generate_general_response(token)
     end
+    
+    def jsonHeader
+      {:key => 'Content-Type', :value => "application/json"}
+    end
   end
+
 end
