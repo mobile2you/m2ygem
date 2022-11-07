@@ -9,15 +9,16 @@ module CdtBaas
 
     def generateToken
       puts @url
-      body = { grant_type: 'client_credentials' }
+      # body = { grant_type: 'client_credentials' }
       # response = @request.post(@url + TOKEN_PATH, body, {})
-      response = @request.postWithHeader(@url + TOKEN_PATH, body, [jsonHeader])
+      response = @request.post(@url + TOKEN_PATH, {})
+      # response = @request.postWithHeader(@url + TOKEN_PATH, body, [jsonHeader])
       token = CdtModel.new(response)
       CdtBaas::CdtRequest.setToken(token)
       CdtHelper.saveToken(@basic, token.access_token)
       CdtHelper.generate_general_response(token)
     end
-    
+
     def jsonHeader
       {:key => 'Content-Type', :value => "application/json"}
     end
