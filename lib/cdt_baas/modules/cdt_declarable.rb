@@ -1,7 +1,7 @@
 module CdtBaas
   class CdtDeclarable < CdtModule
-    def initialize(token, env)
-      startModule(token, env)
+    def initialize(token, env, fixed_ip_url = nil)
+      startModule(token, env, fixed_ip_url)
     end
 
     def declarables_url

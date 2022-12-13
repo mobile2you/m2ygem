@@ -3,8 +3,8 @@ module CdtBaas
 
   class CdtIndividual < CdtModule
 
-    def initialize(token, env)
-      startModule(token, env)
+    def initialize(token, env, fixed_ip_url = nil)
+      startModule(token, env, fixed_ip_url)
     end
 
     def createAccount(body, version = 2)

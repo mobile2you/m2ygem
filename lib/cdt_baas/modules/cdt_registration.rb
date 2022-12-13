@@ -1,7 +1,7 @@
 module CdtBaas
   class CdtRegistration < CdtModule
-    def initialize(token, env)
-      startModule(token, env)
+    def initialize(token, env, fixed_ip_url = nil)
+      startModule(token, env, fixed_ip_url)
     end
 
     def createRegistration(body, version = 1)

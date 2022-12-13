@@ -2,8 +2,8 @@ module CdtBaas
 
 	class CdtAlias < CdtModule
 
-	     def initialize(token, env)
-	        startModule(token, env)
+	     def initialize(token, env, fixed_ip_url = nil)
+	        startModule(token, env, fixed_ip_url)
 	     end
 
 	 	 def createAlias(body)
