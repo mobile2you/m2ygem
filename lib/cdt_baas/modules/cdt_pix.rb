@@ -32,6 +32,12 @@ module CdtBaas
       generateResponse(response)
     end
 
+    def createDynamicCodeImmediate(body)
+      url = pix_url + DYNAMIC_CODE_IMMEDIATE
+      response = @request.post(url, body, true)
+      generateResponse(response)
+    end
+
     def decodeCode(body)
       url = pix_url + DECODE_CODE
       response = @request.post(url, body, true)
