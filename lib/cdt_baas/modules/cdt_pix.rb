@@ -39,7 +39,7 @@ module CdtBaas
     end
 
     def createDynamicCodeLoc(body)
-      url = pix_url + DYNAMIC_CODE_IMMEDIATE
+      url = pix_url + DYNAMIC_CODE_LOC
       response = @request.post(url, body, true)
       generateResponse(response)
     end
