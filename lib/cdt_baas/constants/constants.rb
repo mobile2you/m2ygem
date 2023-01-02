@@ -148,6 +148,7 @@ module CdtBaas
   STATIC_CODE = 'code/v1/static-code'
   DYNAMIC_CODE = 'code/v1/dynamic-code'
   DYNAMIC_CODE_IMMEDIATE = 'code/v1/dynamic-code-immediate'
+  DYNAMIC_CODE_LOC = 'code/v1/dynamic-code-loc'
   DECODE_CODE = 'code/v1/decode'
   LIST_CODES = 'code/v1'
 
