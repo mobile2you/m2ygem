@@ -44,6 +44,12 @@ module CdtBaas
       generateResponse(response)
     end
 
+    def createDynamicCodeDate(body)
+      url = pix_url + DYNAMIC_CODE_DATE
+      response = @request.post(url, body, true)
+      generateResponse(response)
+    end
+
     def decodeCode(body)
       url = pix_url + DECODE_CODE
       response = @request.post(url, body, true)
