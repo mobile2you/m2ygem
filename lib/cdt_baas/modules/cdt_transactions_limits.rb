@@ -42,13 +42,12 @@ module CdtBaas
 
     def trusted_destinations(account)
       list = []
-      g = 1
-      5.times do
+      list_group_id = [1, 5]
+      list_group_id.each do |group|
         url = "#{limits_url}#{LIMITS}/accounts/#{account}/trusted-destinations"
-        url += CdtHelper.conductorBodyToString({ idServicesGroup: g })
+        url += CdtHelper.conductorBodyToString({ idServicesGroup: group })
         response = @request.get(url, [jsonHeader])
         list.push response unless response.blank?
-        g += 1
       end
       generateResponse(list)
     end
@@ -62,19 +61,72 @@ module CdtBaas
     def create_batch_limit_for_trusted_destination(body, account)
       request = []
       pending = []
-      g = 1
-      5.times do
-        url = "#{limits_url}#{LIMITS}/accounts/#{account}/trusted-destinations"
-        body[:idServicesGroup] = g
+      #TODO Ajustar isso
+      url = "#{limits_url}#{LIMITS}/accounts/#{account}/trusted-destinations"
+      body[:idServicesGroup] = 1
+      body[:limits] = [
+        {
+          "limitType": '1',
+          "limitValue": 15000.00
+        },
+        {
+          "limitType": '2',
+          "limitValue": 30000.00
+        },
+        {
+          "limitType": '3',
+          "limitValue": 900000.00
+        },
+        {
+          "limitType": '4',
+          "limitValue": 30000.00
+        },
+        {
+          "limitType": '5',
+          "limitValue": 15000.00
+        }
+      ]
+      result = @request.post(url, body, true)
+      result[:idServicesGroup] = body[:idServicesGroup]
+      if result[:statusCode] > 201
+        pending.push(result)
+      else
+        request.push(result)
+      end
+      
+      body[:idServicesGroup] = 5
+      body[:limits] = [
+        {
+          "limitType": '1',
+          "limitValue": 45000.00
+        },
+          {
+            "limitType": '2',
+            "limitValue": 150000.00
+          },
+          {
+            "limitType": '3',
+            "limitValue": 900000.00
+          },
+          {
+            "limitType": '4',
+            "limitValue": 1000.00 
+          },
+          {
+            "limitType": '5',
+            "limitValue": 1000.00 
+          }
+        ]
         result = @request.post(url, body, true)
+        result[:idServicesGroup] = body[:idServicesGroup]
         if result[:statusCode] > 201
           pending.push(result)
         else
           request.push(result)
         end
-        g += 1
-      end
+        
       request.present? ? request : pending
     end
+
   end
 end
