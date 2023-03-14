@@ -48,7 +48,6 @@ module CdtBaas
                           http_proxyuser: ENV["PROXY_USER"],
                           http_proxypass: ENV["PROXY_PASS"])
 
-      )
       validResponse(req)
     end
 
