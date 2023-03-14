@@ -12,22 +12,22 @@ module CdtBaas
 
     def checkKey(key, account)
       url = pix_url
-      response = @request.get(url + CHECK_KEYS + "/#{key}/account/#{account}", [jsonHeader])
+      response = @request.proxy_get(url + CHECK_KEYS + "/#{key}/account/#{account}", [jsonHeader])
       generateResponse(response)
     end
 
     def createKey(body)
       url = pix_url + CREATE_KEY
-      response = @request.post(url, body, true)
+      response = @request.proxy_post(url, body, true)
       generateResponse(response)
     end
 
     def getKeys(account)
       url = pix_url
       if account.nil?
-        response = @request.get(url + CREATE_KEY , [jsonHeader])
+        response = @request.proxy_get(url + CREATE_KEY , [jsonHeader])
       else
-        response = @request.get(url + CREATE_KEY + "?idAccount=#{account}", [jsonHeader])
+        response = @request.proxy_get(url + CREATE_KEY + "?idAccount=#{account}", [jsonHeader])
       end
       generateResponse(response)
     end
@@ -35,7 +35,7 @@ module CdtBaas
 
     def getKeysByType(key, keyType)
       url = pix_url
-      response = @request.get(url + CREATE_KEY + "?key=#{key}&keyType=#{keyType}", [jsonHeader])
+      response = @request.proxy_get(url + CREATE_KEY + "?key=#{key}&keyType=#{keyType}", [jsonHeader])
       generateResponse(response)
     end
 
@@ -47,16 +47,16 @@ module CdtBaas
 
     def claimKey(body)
       url = pix_url + CLAIM_KEY
-      response = @request.post(url, body, true)
+      response = @request.proxy_post(url, body, true)
       generateResponse(response)
     end
 
     def getKeyClaims(account)
       url = pix_url
       if account.nil?
-        response = @request.get(url + CLAIM_KEY , [jsonHeader])
+        response = @request.proxy_get(url + CLAIM_KEY , [jsonHeader])
       else
-        response = @request.get(url + CLAIM_KEY + "?idAccount=#{account}&limit=100", [jsonHeader])
+        response = @request.proxy_get(url + CLAIM_KEY + "?idAccount=#{account}&limit=100", [jsonHeader])
       end
       generateResponse(response)
     end

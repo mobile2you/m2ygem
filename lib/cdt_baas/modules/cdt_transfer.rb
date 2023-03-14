@@ -23,7 +23,7 @@ module CdtBaas
           },
           "value": original_body[:value]
         }
-      response = @request.post(@url + BANK_TRANSFER, body, true)
+      response = @request.proxy_post(@url + BANK_TRANSFER, body, true)
       transferResponse = CdtModel.new(response)
       generateResponse(transferResponse)
     end

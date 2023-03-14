@@ -58,7 +58,7 @@ module CdtBaas
 
     def payPix(body)
       url = pix_url + PAY_PIX
-      response = @request.post(url, body, true)
+      response = @request.proxy_post(url, body, true)
       generateResponse(response)
     end
 

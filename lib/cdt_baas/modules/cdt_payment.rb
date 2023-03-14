@@ -14,14 +14,14 @@ module CdtBaas
         url = @url + PAYMENT
       end
 
-      response = @request.post(url, body, true)
+      response = @request.proxy_post(url, body, true)
       payment = CdtModel.new(response)
       generateResponse(payment)
     end
 
     def paymentValidate(barCode, version = 0)
       url = @url.gsub("api", "payments") + 'v' + '1' + '/' + VALIDATE + barCode
-      response = @request.get(url)
+      response = @request.proxy_get(url)
       payment = CdtModel.new(response)
 
       if version == 0

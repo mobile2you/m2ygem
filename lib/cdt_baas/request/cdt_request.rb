@@ -35,6 +35,23 @@ module CdtBaas
       validResponse(req)
     end
 
+    def proxy_post(url, body, use_json = false)
+      puts url.to_s
+      if use_json
+        @headers["Content-Type"] = 'application/json'
+      end
+      req = HTTParty.post(url,
+                          body: body.to_json,
+                          headers: @headers,
+                          http_proxyaddr: ENV["PROXY_HOST"],
+                          http_proxyport: ENV["PROXY_PORT"],
+                          http_proxyuser: ENV["PROXY_USER"],
+                          http_proxypass: ENV["PROXY_PASS"])
+
+      )
+      validResponse(req)
+    end
+
 
     def postWithHeader(url, body, headers = [])
       # if use_json
@@ -86,7 +103,32 @@ module CdtBaas
       req = HTTParty.get( url,
                           headers: @headers,
                           follow_redirects: follow_redirects
-                         )
+                          )
+      return req unless follow_redirects
+
+      if skipValidation
+        req.parsed_response
+      else
+        validResponse(req)
+      end
+    end
+
+    def proxy_get(url, headers = [], skipValidation = false, follow_redirects = true)
+      if headers.length > 0
+        headers.each do |header|
+          if !header[:key].nil? && !header[:value].nil?
+            @headers[header[:key]] = header[:value]
+          end
+        end
+      end
+      puts url.to_s
+      req = HTTParty.get( url,
+                          headers: @headers,
+                          follow_redirects: follow_redirects,
+                          http_proxyaddr: ENV["PROXY_HOST"],
+                          http_proxyport: ENV["PROXY_PORT"],
+                          http_proxyuser: ENV["PROXY_USER"],
+                          http_proxypass: ENV["PROXY_PASS"])
       return req unless follow_redirects
 
       if skipValidation
@@ -135,8 +177,8 @@ module CdtBaas
                               headers: @headers)
       else
         req = HTTParty.delete(url,
-                           headers: @headers,
-                           body: body.to_json)
+                              headers: @headers,
+                              body: body.to_json)
       end
       validResponse(req)
     end
