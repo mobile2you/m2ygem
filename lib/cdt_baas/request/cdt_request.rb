@@ -24,15 +24,7 @@ module CdtBaas
     end
 
     def post(url, body, use_json = false)
-      puts url.to_s
-      if use_json
-        @headers["Content-Type"] = 'application/json'
-      end
-      req = HTTParty.post(url,
-                          body: body.to_json,
-                          headers: @headers
-                          )
-      validResponse(req)
+      proxy_post(url, body, use_json)
     end
 
     def proxy_post(url, body, use_json = false)
@@ -67,8 +59,12 @@ module CdtBaas
       puts url.to_s
       req = HTTParty.post(url,
                           body: body.to_json,
-                          headers: @headers
-                          )
+                          headers: @headers,
+                          http_proxyaddr: ENV["PROXY_HOST"],
+                          http_proxyport: ENV["PROXY_PORT"],
+                          http_proxyuser: ENV["PROXY_USER"],
+                          http_proxypass: ENV["PROXY_PASS"])
+
       validResponse(req)
     end
 
@@ -84,8 +80,11 @@ module CdtBaas
 
       req = HTTParty.post(url,
                           body: body,
-                          headers: headers
-                          )
+                          headers: headers,
+                          http_proxyaddr: ENV["PROXY_HOST"],
+                          http_proxyport: ENV["PROXY_PORT"],
+                          http_proxyuser: ENV["PROXY_USER"],
+                          http_proxypass: ENV["PROXY_PASS"])
 
       validResponse(req)
     end
@@ -101,8 +100,12 @@ module CdtBaas
       puts url.to_s
       req = HTTParty.get( url,
                           headers: @headers,
-                          follow_redirects: follow_redirects
-                          )
+                          follow_redirects: follow_redirects,
+                          http_proxyaddr: ENV["PROXY_HOST"],
+                          http_proxyport: ENV["PROXY_PORT"],
+                          http_proxyuser: ENV["PROXY_USER"],
+                          http_proxypass: ENV["PROXY_PASS"])
+
       return req unless follow_redirects
 
       if skipValidation
@@ -146,8 +149,12 @@ module CdtBaas
 
       req = HTTParty.put(url,
                          headers: @headers,
-                         body: body.to_json
-                         )
+                         body: body.to_json,
+                         http_proxyaddr: ENV["PROXY_HOST"],
+                         http_proxyport: ENV["PROXY_PORT"],
+                         http_proxyuser: ENV["PROXY_USER"],
+                         http_proxypass: ENV["PROXY_PASS"])
+
       validResponse(req)
     end
 
@@ -159,8 +166,11 @@ module CdtBaas
       end
       req = HTTParty.patch(url,
                            headers: @headers,
-                           body: body.to_json
-                           )
+                           body: body.to_json,
+                           http_proxyaddr: ENV["PROXY_HOST"],
+                           http_proxyport: ENV["PROXY_PORT"],
+                           http_proxyuser: ENV["PROXY_USER"],
+                           http_proxypass: ENV["PROXY_PASS"])
       validResponse(req)
     end
 
@@ -173,11 +183,21 @@ module CdtBaas
       end
       if body.nil?
         req = HTTParty.delete(url,
-                              headers: @headers)
+                              headers: @headers,
+                              http_proxyaddr: ENV["PROXY_HOST"],
+                              http_proxyport: ENV["PROXY_PORT"],
+                              http_proxyuser: ENV["PROXY_USER"],
+                              http_proxypass: ENV["PROXY_PASS"])
+
       else
         req = HTTParty.delete(url,
                               headers: @headers,
-                              body: body.to_json)
+                              body: body.to_json,
+                              http_proxyaddr: ENV["PROXY_HOST"],
+                              http_proxyport: ENV["PROXY_PORT"],
+                              http_proxyuser: ENV["PROXY_USER"],
+                              http_proxypass: ENV["PROXY_PASS"])
+
       end
       validResponse(req)
     end
