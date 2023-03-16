@@ -10,7 +10,7 @@ module CdtBaas
     def generateToken
       puts @url
       body = { grant_type: 'client_credentials' }
-      response = @request.post(@url + TOKEN_PATH, body, {})
+      response = @request.proxy_post(@url + TOKEN_PATH, body, {})
       token = CdtModel.new(response)
       CdtBaas::CdtRequest.setToken(token)
       CdtHelper.saveToken(@basic, token.access_token)
