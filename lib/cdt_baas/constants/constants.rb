@@ -122,6 +122,7 @@ module CdtBaas
   REPORTS = 'reports'
   REQUESTS = 'requests'
   BIOMETRIC = 'biometric'
+  CATEGORY = '?category'
 
   CONFIRM_ORDER = '/confirm'
   CREATE_ORDER = '/create'

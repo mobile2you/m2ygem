@@ -78,12 +78,10 @@ module CdtBaas
 
     # POST https://api.hml.caradhras.io/v2/individuals/{registrationId}/documents/biometric
     def uploadBiometrics(registration_id, params)
-      options[:headers] = {'Content-Type' => 'application/json'} if options[:headers].blank?
-      options[:body] = {
-        "jwt": params[:jwt],
-        "imageBase64": params[:imageBase64]
-      }.to_json
-      response = @request.postBinary(@url + "v2/" + INDIVIDUALS + '/' + registration_id.to_s + "/" + DOCUMENTS + "/" + BIOMETRIC, options)
+      options = {}
+      options[:headers] = { 'Content-Type' => 'application/json' } if options[:headers].blank?
+      options[:body] = { 'jwt' => params[:jwt], 'imageBase64' => params[:imageBase64] }
+      response = @request.postBinary(@url + "v2/" + INDIVIDUALS + '/' + registration_id.to_s + "/" + DOCUMENTS + "/" + BIOMETRIC + CATEGORY + "=#{params[:type]}", options)
       CdtModel.new(response)
     end
 
