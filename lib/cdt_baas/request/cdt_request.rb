@@ -74,6 +74,22 @@ module CdtBaas
       validResponse(req)
     end
 
+    def postNew(url, body)
+      options = {
+        headers: {
+          'Authorization': @headers['Authorization'],
+          'Content-Type': 'application/json'
+        },
+        body: {
+          jwt: body[:jwt],
+          imageBase64: body[:imageBase64]
+        }
+      }
+      response = HTTParty.send(:post, url, options.to_json)
+      byebug
+      response
+    end
+
     def get(url, headers = [], skipValidation = false, follow_redirects = true)
       if headers.length > 0
         headers.each do |header|

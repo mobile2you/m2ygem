@@ -77,14 +77,20 @@ module CdtBaas
     end
 
     # POST https://api.hml.caradhras.io/v2/individuals/{registrationId}/documents/biometric
+    # def uploadBiometrics(registration_id, params)
+    #   options = {}
+    #   options[:headers] = { 'Content-Type' => 'application/json' } if options[:headers].blank?
+    #   options[:body] = { 'jwt' => params[:jwt], 'imageBase64' => params[:imageBase64] }
+    #   response = @request.postBinary(@url + "v2/" + INDIVIDUALS + '/' + registration_id.to_s + "/" + DOCUMENTS + "/" + BIOMETRIC + CATEGORY + "=#{params[:type]}", options)
+    #   CdtModel.new(response)
+    #
+
     def uploadBiometrics(registration_id, params)
-      options = {}
-      options[:headers] = { 'Content-Type' => 'application/json' } if options[:headers].blank?
-      options[:body] = { 'jwt' => params[:jwt], 'imageBase64' => params[:imageBase64] }
-      response = @request.postBinary(@url + "v2/" + INDIVIDUALS + '/' + registration_id.to_s + "/" + DOCUMENTS + "/" + BIOMETRIC + CATEGORY + "=#{params[:type]}", options)
+      body = { "jwt": params[:jwt], "imageBase64": params[:imageBase64] }
+      url = "https://api.hml.caradhras.io/v2/individuals/'#{registration_id}'/documents/biometric?category=#{params[:type]}"
+      response = @request.postNew(url, body)
       CdtModel.new(response)
     end
-
   end
 
 end
