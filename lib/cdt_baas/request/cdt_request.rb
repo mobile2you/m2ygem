@@ -28,14 +28,12 @@ module CdtBaas
       if use_json
         @headers["Content-Type"] = 'application/json'
       end
-      byebug
       req = HTTParty.post(url,
                           body: body.to_json,
                           headers: @headers
                          )
       validResponse(req)
     end
-
 
     def postWithHeader(url, body, headers = [])
       # if use_json
