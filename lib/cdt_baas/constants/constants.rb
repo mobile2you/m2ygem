@@ -121,6 +121,8 @@ module CdtBaas
   CONTROLS_SETTINGS = 'controles-configuracoes'
   REPORTS = 'reports'
   REQUESTS = 'requests'
+  BIOMETRIC = 'biometric'
+  CATEGORY = '?category'
 
   CONFIRM_ORDER = '/confirm'
   CREATE_ORDER = '/create'

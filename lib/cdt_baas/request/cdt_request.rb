@@ -31,10 +31,9 @@ module CdtBaas
       req = HTTParty.post(url,
                           body: body.to_json,
                           headers: @headers
-                          )
+                         )
       validResponse(req)
     end
-
 
     def postWithHeader(url, body, headers = [])
       # if use_json
