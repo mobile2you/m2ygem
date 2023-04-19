@@ -79,7 +79,7 @@ module CdtBaas
     def uploadBiometrics(registration_id, params)
       body = { 'jwt' => params[:jwt] }
       url_full = @url + 'v2/' + INDIVIDUALS + '/' + registration_id + '/' + DOCUMENTS + '/' + BIOMETRIC + CATEGORY + "=#{params[:type]}" + '&additionalDetails=true'
-      response = @request.postNew(url_full, body, true)
+      response = @request.post(url_full, body, true)
       CdtModel.new(response)
     end
   end
