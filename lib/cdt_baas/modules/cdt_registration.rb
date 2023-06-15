@@ -18,10 +18,10 @@ module CdtBaas
       CdtModel.new(response)
     end
 
-    def getCompanies(body, version = 2)
+    def getCompanies(status, body, version = 1)
       @url = @url.gsub('api', 'companies') + 'v' + version.to_s + '/'
 
-      response = @request.get(@url + REGISTRATIONS + STATUSES + CdtHelper.conductorBodyToString(body))
+      response = @request.get(@url + REGISTRATIONS + STATUSES + status + CdtHelper.conductorBodyToString(body))
       person = CdtModel.new(response)
       person
     end
