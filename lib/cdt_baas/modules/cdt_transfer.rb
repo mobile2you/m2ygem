@@ -88,6 +88,15 @@ module CdtBaas
       generateResponse(transferResponse)
     end
 
+    def getAllBankTransfersCashout(limit, page)
+      limit.nil? ? limit = 10 : limit
+      page.nil? ? page = 0 : page
+      @url = @url.include?('hml') ? URL_CUSTOM_TRANSFER_HML : URL_CUSTOM_TRANSFER
+      response = @request.get(@url + TRANSACTIONS_CASHOUT + "?limit=#{limit}&page=#{page}")
+      transferResponse = response
+      generateResponse(transferResponse)
+    end
+
     def getBankTransfersReceiptCashout(id)
       @url = @url.include?('hml') ? URL_CUSTOM_TRANSFER_HML : URL_CUSTOM_TRANSFER
       response = @request.get(@url + RECEIPT_CASHOUT + id.to_s)
