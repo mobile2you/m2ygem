@@ -68,6 +68,15 @@ module CdtBaas
       generateResponse(response)
     end
 
+
+    def listTransders(body)
+      url = pix_url
+      response = @request.proxy_get(url + NEW_LIST_PIX + CdtHelper.conductorBodyToString(body), [jsonHeader])
+      person = CdtModel.new(response)
+      person
+    end
+
+
     def getReceipts(account, page, from = nil, to = nil, idEndToEnd = nil)
       url = pix_url
       endpoint = if Date.today > Date.new(2021,11,30)
