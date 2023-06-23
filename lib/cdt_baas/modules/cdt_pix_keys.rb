@@ -23,6 +23,13 @@ module CdtBaas
       person
     end
 
+    def listClaimKeys(body)
+      url = pix_url
+      response = @request.proxy_get(url + CLAIM_KEY + CdtHelper.conductorBodyToString(body), [jsonHeader])
+      person = CdtModel.new(response)
+      person
+    end
+
 
     def createKey(body)
       url = pix_url + CREATE_KEY
