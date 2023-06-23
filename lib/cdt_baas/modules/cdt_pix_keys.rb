@@ -18,7 +18,7 @@ module CdtBaas
 
     def listKeys(body)
       url = pix_url
-      response = @request.get(url + CREATE_KEY + CdtHelper.conductorBodyToString(body))
+      response = @request.proxy_get(url + CREATE_KEY + CdtHelper.conductorBodyToString(body))
       person = CdtModel.new(response)
       person
     end
