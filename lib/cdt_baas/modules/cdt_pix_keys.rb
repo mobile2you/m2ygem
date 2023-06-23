@@ -16,6 +16,14 @@ module CdtBaas
       generateResponse(response)
     end
 
+    def listKeys(body)
+      url = pix_url
+      response = @request.get(url + CREATE_KEY + CdtHelper.conductorBodyToString(body))
+      person = CdtModel.new(response)
+      person
+    end
+
+
     def createKey(body)
       url = pix_url + CREATE_KEY
       response = @request.proxy_post(url, body, true)
