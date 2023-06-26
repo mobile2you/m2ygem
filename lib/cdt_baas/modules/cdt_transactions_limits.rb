@@ -28,6 +28,12 @@ module CdtBaas
       generateResponse(response)
     end
 
+    def list_account_limits(account)
+      url = "#{limits_url}#{LIMITS}/accounts/#{account}"
+      response = @request.get(url, [jsonHeader])
+      generateResponse(response)
+    end
+
     def update_account_timetables(body, account)
       url = "#{limits_url}#{LIMITS}/accounts/#{account}/timetables"
       response = @request.put(url, body)
