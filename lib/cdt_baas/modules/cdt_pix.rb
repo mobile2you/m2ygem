@@ -76,6 +76,13 @@ module CdtBaas
       person
     end
 
+    def listReversalTransders(body)
+      url = pix_url
+      response = @request.proxy_get(url + LIST_PIX_REVERSAL + CdtHelper.conductorBodyToString(body), [jsonHeader])
+      person = CdtModel.new(response)
+      person
+    end
+
 
     def getReceipts(account, page, from = nil, to = nil, idEndToEnd = nil)
       url = pix_url
