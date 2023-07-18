@@ -30,6 +30,12 @@ module CdtBaas
 	         person
 	     end
 
+      def findCardDataV2(id, person_id)
+        response = @request.get(@url + CARDS_V2 + id.to_s + CARD_HOLDERS + person_id.to_s + REAL_DATA)
+        person = CdtModel.new(response)
+        person
+	     end
+
 	     def passwordValidation(id, body)
 	         response = @request.get(@url + CARD + id.to_s + '/' + PASSWORD_VALIDATION, [{:key => 'senha', :value => body[:password]}, {:key => 'Senha', :value => body[:password]}])
 	         person = CdtModel.new(response)
