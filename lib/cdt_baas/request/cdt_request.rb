@@ -82,10 +82,10 @@ module CdtBaas
         end
       end
       puts url.to_s
-      req = HTTParty.get( url,
-                          headers: @headers,
-                          follow_redirects: follow_redirects
-                         )
+      req = HTTParty.get(url,
+                         headers: @headers,
+                         follow_redirects: follow_redirects
+                        )
       return req unless follow_redirects
 
       if skipValidation
@@ -93,6 +93,20 @@ module CdtBaas
       else
         validResponse(req)
       end
+    end
+
+    def getEncrypt(url, headers = [])
+      headers&.each do |header|
+        key = header[:key]
+        value = header[:value]
+        @headers[key] = value if key && value
+      end
+      puts url.to_s
+      req = HTTParty.get(url, headers: @headers)
+      default_error = { response: 'Erro interno Baas', statusCode: 500 }
+      return default_error if req.body.nil?
+
+      { response: req.body, statusCode: req.code }
     end
 
     def put(url, body = {}, headers = [])

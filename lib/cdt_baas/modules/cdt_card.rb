@@ -30,10 +30,11 @@ module CdtBaas
 	         person
 	     end
 
-      def findCardDataV2(id, person_id)
-        response = @request.get(@url + CARDS_V2 + id.to_s + CARD_HOLDERS + person_id.to_s + REAL_DATA)
-        person = CdtModel.new(response)
-        person
+      def cardRealData(id, person_id)
+        headers = [{ key: 'Content-Type', value: 'application/json' }]
+        full_url = @url + CARDS_V2 + id.to_s + CARD_HOLDERS + person_id.to_s + REAL_DATA
+        response = @request.getEncrypt(full_url, headers)
+        CdtModel.new(response)
 	     end
 
 	     def passwordValidation(id, body)
