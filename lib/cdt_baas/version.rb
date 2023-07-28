@@ -1,3 +1,3 @@
 module CdtBaas
-  VERSION = '1.28.1'
+  VERSION = '1.29.1'
 end

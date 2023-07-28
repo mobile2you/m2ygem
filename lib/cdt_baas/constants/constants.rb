@@ -131,6 +131,12 @@ module CdtBaas
   CHANGE_CARD_PHASE = '/alterar-estagio'
   UPDATE_MAILING_ADDRESS = '/alterar-endereco-correspondencia'
 
+
+  # CARDS V2
+  CARDS_V2 = 'cards/'
+  CARD_HOLDERS = '/cardholders/'
+  REAL_DATA = '/data/real'
+
   # TED ONLINE
 
   PAY_CASHOUT = 'v1/cashout'
