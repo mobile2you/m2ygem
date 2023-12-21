@@ -38,7 +38,6 @@ module CdtBaas
             @message = ""
             @errorType = nil
             hasError = false
-            
             if cdtResponse.class == Hash
                 if !cdtResponse['exception'].nil?
                     hasError = true
@@ -56,18 +55,18 @@ module CdtBaas
                     else
                         @errorType = ErrorEnum::UnknownError
                     end
-                    if !cdtResponse[:code].nil?
-                        @cdtStatus = cdtResponse[:code]
-                    elsif !cdtResponse[:status].nil?
-                        @cdtStatus = cdtResponse[:status]
+                    if !cdtResponse['code'].nil?
+                        @cdtStatus = cdtResponse['code']
+                    elsif !cdtResponse['status'].nil?
+                        @cdtStatus = cdtResponse['status']
                     end
                     generateReasons(cdtResponse)
-                elsif !cdtResponse[:message].nil? and !cdtResponse[:message].downcase.include? "success"
+                elsif !cdtResponse['message'].nil? and !cdtResponse['message'].downcase.include? 'success'
                     hasError = true
-                    @message = cdtResponse[:message]
-                elsif !cdtResponse[:error].nil?
+                    @message = cdtResponse['message']
+                elsif !cdtResponse['error'].nil?
                     hasError = true
-                    @message = cdtResponse[:message]
+                    @message = cdtResponse['message']
                     generateReasons(cdtResponse)
                     @errorType = ErrorEnum::UnknownError
                 end
@@ -77,8 +76,8 @@ module CdtBaas
 
         def generateReasons(cdtResponse)
             @reasons = []
-            if !cdtResponse[:erros].nil?
-                cdtResponse[:erros].each do |error|
+            if !cdtResponse['erros'].nil?
+                cdtResponse['erros'].each do |error|
                     reasonMessage = ""
                     if !error["field"].nil?
                         reasonMessage += error["field"]
@@ -90,10 +89,10 @@ module CdtBaas
                     reason = { message: reasonMessage, cdtCode: error["code"] }
                     @reasons << reason
                 end
-            elsif !cdtResponse[:message].nil?
-                @reasons << cdtResponse[:message]
-            elsif !cdtResponse[:error].nil?
-                @reasons << cdtResponse[:error]
+            elsif !cdtResponse['message'].nil?
+                @reasons << cdtResponse['message']
+            elsif !cdtResponse['error'].nil?
+                @reasons << cdtResponse['error']
             end
         end
     end
